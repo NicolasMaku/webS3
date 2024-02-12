@@ -14,7 +14,6 @@ class Crud {
         $valeurs = ':' . implode(', :', array_keys($donnees));
 
         $requete = $this->connexion->prepare("INSERT INTO {$this->table} ({$colonnes}) VALUES ({$valeurs})");
-        echo "INSERT INTO {$this->table} ({$colonnes}) VALUES ({$valeurs})";
 
         foreach ($donnees as $cle => $valeur) {
             $requete->bindValue(':' . $cle, $valeur);
