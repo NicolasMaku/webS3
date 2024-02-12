@@ -7,15 +7,9 @@
     }
 
     function parcelle_supprimer($id) {
-        $crud = new Crud('the_parcelle',connect());
-
-        try {
-            $crud->delete($id);
-            return true;
-
-        }catch (Exception $exception){
-            return $exception->getMessage();
-        }
+        $requete = $this->connexion->prepare("DELETE FROM {$this->table} WHERE numero = :id");
+        $requete->bindValue(':id', $id);
+        $requete->execute();
     }
 
 function parcelle_insert($surface,$id_variete_the) {
