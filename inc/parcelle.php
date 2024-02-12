@@ -51,7 +51,7 @@ function parcelle_insert($surface,$id_variete_the) {
             }
             $modification = rtrim($modification, ', ');
 
-            $requete = $this->connexion->prepare("UPDATE {$this->table} SET {$modification} WHERE numero = :numero");
+            $requete = connect()->prepare("UPDATE the_parcelle SET {$modification} WHERE numero = :numero");
 
             $requete->bindValue(':numero', $numero);
 
@@ -80,6 +80,6 @@ function parcelle_insert($surface,$id_variete_the) {
         return $crud->lister();
     }
 
-//    var_dump(parcelle_variete_getAll());
+//    var_dump(parcelle_getByid(1));
 //    parcelle_insert(25,1);
 ?>
