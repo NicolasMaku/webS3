@@ -11,7 +11,7 @@ switch ($action){
             if($id_user !== false){
                 session_start();
                 $_SESSION['idUser'] = $id_user;
-                header("location:  ");
+                header("location:../template/");
                 exit();
             }
 
@@ -32,6 +32,6 @@ switch ($action){
 //        echo "hello";
 
 }
-$id_user = testLogin("utilisateur1@email.com", "motdepasse1");
-echo $id_user;
+//$id_user = testLogin("admin1@email.com", "adminpassword");
+//echo $id_user;
 //echo "a";

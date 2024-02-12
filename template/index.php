@@ -123,17 +123,17 @@ $page=$_GET['page'];
           </a>
           <ul class="menu-sub">
             <li class="menu-item">
-              <a href="index.php?page=account.php" class="menu-link">
+              <a href="index.php?page=../pages/account.php" class="menu-link">
                 <div data-i18n="Account">Account</div>
               </a>
             </li>
             <li class="menu-item">
-              <a href="index.php?page=notification.php" class="menu-link">
+              <a href="index.php?page=../pages/notification.php" class="menu-link">
                 <div data-i18n="Notifications">Notifications</div>
               </a>
             </li>
             <li class="menu-item">
-              <a href="index.php?page=connection.php" class="menu-link">
+              <a href="index.php?page=../pages/connection.php" class="menu-link">
                 <div data-i18n="Connections">Connections</div>
               </a>
             </li>
@@ -150,12 +150,12 @@ $page=$_GET['page'];
           </a>
           <ul class="menu-sub">
             <li class="menu-item active">
-              <a href="index.php?page=form.html" class="menu-link">
+              <a href="index.php?page=../pages/form.php" class="menu-link">
                 <div data-i18n="Basic Inputs">Basic Inputs</div>
               </a>
             </li>
             <li class="menu-item">
-              <a href="index.php?page=inputgroupes.php" class="menu-link">
+              <a href="index.php?page=../pages/inputgroupes.php" class="menu-link">
                 <div data-i18n="Input groups">Input groups</div>
               </a>
             </li>
@@ -165,7 +165,7 @@ $page=$_GET['page'];
 
         <!-- Tables -->
         <li class="menu-item">
-          <a href="index.php?page=tables.php" class="menu-link">
+          <a href="index.php?page=../pages/tables.php" class="menu-link">
             <i class="menu-icon tf-icons bx bx-table"></i>
             <div data-i18n="Tables">Tables</div>
           </a>
@@ -173,14 +173,14 @@ $page=$_GET['page'];
         <!--lastna -->
 
         <li class="menu-item">
-          <a href="index.php?page=../template/saisieCeuillette.php" class="menu-link">
+          <a href="index.php?page=../pages/saisieCeuillette.php" class="menu-link">
             <i class='menu-icon bx bxs-leaf'></i>
             <div data-i18n="Tables">Saisie de ceuillette</div>
           </a>
         </li>
 
         <li class="menu-item">
-          <a href="index.php?page=../template/saisieDepenses.php" class="menu-link">
+          <a href="index.php?page=../pages/saisieDepenses.php" class="menu-link">
             <i class='menu-icon bx bxs-store' ></i>
             <div data-i18n="Tables">Saisie de depenses</div>
           </a>
