@@ -19,7 +19,7 @@ switch($action){
 
 
     case "delete":
-        $return = the_delete($_POST['id']);
+        $return = the_delete($_GET['idVariete']);
 
         if($return === true){
             $msg = "Variete de thé supprimé";
@@ -28,7 +28,7 @@ switch($action){
             $msg = $return;
         }
 
-        header("location:../template/backModel.php?page=../pages/tableauVarieteThe.php&msg=".$msg);
+        header("location:../template/backModel.php?page=../pages/tableauVarieterThe.php&msg=".$msg);
         break;
 
 }

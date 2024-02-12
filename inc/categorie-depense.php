@@ -7,7 +7,7 @@
         return $crud->lister();
     }
 
-    function the_getByid($id) {
+    function categorie_getByid($id) {
         $crud = new Crud('the_categorie_depense',connect());
         try {
             return $crud->getById($id);

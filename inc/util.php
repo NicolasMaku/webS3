@@ -7,3 +7,7 @@ function get_action($get, $post){
 
     return null;
 }
+
+function alert($msg){
+    echo "<script>alert('$msg')</script>";
+}
