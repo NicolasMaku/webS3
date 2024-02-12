@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="card mb-4">
-                    <h5 class="card-header">Insere un ceuilleur</h5>
+                    <h5 class="card-header">Configuerer le montant du salaire</h5>
                     <div class="card-body">
                         <form action="" id="ceuillette-form">
                             <input type="hidden" name="action" value="save">
@@ -13,29 +13,24 @@
                             <div>
 
                                 <div class="mb-3 row">
-                                    <label for="html5-text-input" class="col-md-3 col-form-label">Nom</label>
-                                    <div class="col-md-9">
-                                        <input type="text" id="html5-text-input" class="form-control" name="">
-
-                                    </div>
-                                </div>
-
-                                <div class="mb-3 row">
-                                    <label for="html5-text-input" class="col-md-3 col-form-label">Genre</label>
+                                    <label for="html5-text-input" class="col-md-3 col-form-label">Ceuilleur</label>
                                     <div class="col-md-9">
                                         <select name="idCateg" id="html5-text-input" class="form-select">
 
-                                            <option value="Homme">Homme</option>
-                                            <option value="Femme">Femme</option>
+                                            <option value="Homme">sechepinn</option>
+                                            <option value="Femme">larrypage</option>
 
                                         </select>
                                     </div>
                                 </div>
 
-                                <div class="mb-3 row">
-                                    <label for="html5-date-input" class="col-md-3 col-form-label">Date</label>
-                                    <div class="col-md-9">
-                                        <input class="form-control" type="date" value="2021-06-18" id="html5-date-input" name="date">
+                                <div class="row mb-3">
+                                    <label class="col-sm-3 col-form-label" for="basic-icon-default-email">Salaire</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group input-group-merge">
+                                            <input type="number" id="basic-icon-default-email" class="form-control" aria-describedby="basic-icon-default-email2" name="">
+                                            <span id="basic-icon-default-email2" class="input-group-text">AR</span>
+                                        </div>
                                     </div>
                                 </div>
 

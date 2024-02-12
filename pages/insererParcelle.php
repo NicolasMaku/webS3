@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="card mb-4">
-                    <h5 class="card-header">Insere une variete de the</h5>
+                    <h5 class="card-header">Inserer une Parcelle</h5>
                     <div class="card-body">
                         <form action="" id="ceuillette-form">
                             <input type="hidden" name="action" value="save">
