@@ -23,6 +23,17 @@
                                         <input class="btn btn-outline-primary" type="submit" id="button-addon2" value="Afficher">
                                     </div>
                                 </form>
+
+                                <form action="">
+                                    <div class="input-group">
+                                        <span class="input-group-text">Date Max and Min</span>
+                                        <input type="date" aria-label="Max" class="form-control" placeholder="Max...">
+                                        <input type="date" aria-label="Min" class="form-control" placeholder="Min...">
+                                    </div>
+                                    <input type="submit" class="btn btn-primary" value="Afficher">
+                                </form>
+
+
                             </div>
                         </div>
                         <div class="col-sm-5 text-center text-sm-left">
