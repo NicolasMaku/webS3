@@ -27,4 +27,17 @@ switch ($action){
                 header("location:../template/backModel.php?page=../pages/insererParcelle.php&action=update&idParcelle=".$_POST['idParcelle']."&error=".$return);
             }
             exit();
+
+
+    case "delete":
+            $return = parcelle_supprimer($_GET['idParcelle']);
+
+            if($return === true){
+                header("location:../template/backModel.php?page=../pages/tableauParcelle.php");
+
+            } else {
+                header("location:../template/backModel.php?page=../pages/tableauParcelle.php&msg=".$return);
+            }
+            exit();
+
 }
