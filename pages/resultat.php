@@ -1,3 +1,10 @@
+<?php
+    include_once "../inc/function.php";
+    $pds_total_ceuillette = getPoidsTotalCeuillette();
+    $pds_restant_parcelle = getPoidsRestantParcelle();
+    $prix_revient = getCoutRevientKg();
+?>
+
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
@@ -33,7 +40,7 @@
                                         </div>
                                         <div class="mt-sm-auto">
 
-                                            <h3 class="mb-0">8000 KG</h3>
+                                            <h3 class="mb-0"><?php echo $pds_total_ceuillette?></h3>
                                         </div>
                                     </div>
                                     <div id="profileReportChart" style="min-height: 80px;"><img src="../assets/img/illustrations/feuille-remove.png" height="140" alt="View Badge User"></div>
@@ -55,7 +62,7 @@
 
                                         </div>
                                         <div class="mt-sm-auto">
-                                            <h3 class="mb-0">5000 KG</h3>
+                                            <h3 class="mb-0"><?php echo $pds_restant_parcelle?></h3>
                                         </div>
                                     </div>
                                     <div id="profileReportChart" style="min-height: 80px;"><img src="../assets/img/illustrations/terrain-remov.png" height="140" alt="View Badge User"></div>
@@ -86,7 +93,7 @@
                                             <h6 class="mb-0">Prix de Revient par kg</h6>
                                         </div>
                                         <div class="user-progress d-flex align-items-center gap-1">
-                                            <h6 class="mb-0">50000</h6>
+                                            <h6 class="mb-0"><?php echo $prix_revient ?></h6>
                                             <span class="text-muted">AR</span>
                                         </div>
                                     </div>
