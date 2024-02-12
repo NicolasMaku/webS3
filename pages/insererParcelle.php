@@ -7,6 +7,7 @@
     if(isset($_GET['action'])){
         $is_update = true;
         $parcelle = parcelle_getByid($_GET['idParcelle']);
+//        var_dump($parcelle);
     }
 
 ?>
@@ -19,9 +20,9 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="card mb-4">
-                    <h5 class="card-header">Inserer une Parcelle</h5>
+                    <h5 class="card-header"><?php echo $is_update ? "Modifier" : "Inserer"?> une Parcelle</h5>
                     <div class="card-body">
-                        <form action="" id="parcelle-form">
+                        <form action="../controllers/parcelleControl.php" method="POST" id="parcelle-form">
                             <input type="hidden" name="action" value="<?php echo $is_update ? "update" : "save"?>">
 
                             <?php if($is_update) { ?>
