@@ -1,6 +1,7 @@
 <?php
     include_once "base.php";
     include_once "Crud.php";
+
     function inserer_ceuillette($date,$id_ceuilleur,$id_parcelle,$poids_ceuilli) {
         $ceuilleutte = [
             "date" => $date,
@@ -9,10 +10,18 @@
             "poids_ceuilli" => $poids_ceuilli
         ];
 
-        $crud = new Crud('the_ceuillette',connect());
-        $crud->insert($ceuilleutte);
+        try {
+            $crud = new Crud('the_ceuillette', connect());
+            $crud->insert($ceuilleutte);
 
+            return "Cueillette bien inseré";
+
+
+        }catch (Exception $exception){
+            return $exception->getMessage();
+        }
     }
+
 
     function valide($poids_ceuilli) {
         return false;
