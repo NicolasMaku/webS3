@@ -54,8 +54,7 @@
                                     <div class="col-sm-9">
                                         <div class="input-group input-group-merge">
                                             <input type="number" id="basic-icon-default-email" class="form-control" aria-describedby="basic-icon-default-email2" name="rendement"
-                                            value="<?php echo $is_update ? $variete['rendement_par_pied'] : ""  ?>"
-                                            >
+                                            value="<?php echo $is_update ? $variete['rendement_par_pied'] : ""  ?>" >
                                             <span id="basic-icon-default-email2" class="input-group-text">KG</span>
                                         </div>
                                     </div>
