@@ -3,7 +3,6 @@
 include_once "../inc/function.php";
 
 $action = get_action($_GET, $_POST);
-
 switch ($action){
     case "save":
             $return = ceuilleur_insert($_POST['nom'], $_POST['genre'], $_POST['date']);
@@ -38,7 +37,12 @@ switch ($action){
             }
             exit();
 
-
+    case "salaire":
+            echo salaire_getByid($_POST['idCeuilleur'])['montant'];
+            exit();
 
 
 }
+
+//var_dump(salaire_getByid(1));
+

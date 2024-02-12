@@ -1,3 +1,8 @@
+<?php
+    include_once "../inc/function.php";
+    $ceuilleurs =  ceuilleur_getAll();
+?>
+
 <div class="content-wrapper">
     <!-- Content -->
 
@@ -7,19 +12,21 @@
                 <div class="card mb-4">
                     <h5 class="card-header">Configuerer le montant du salaire</h5>
                     <div class="card-body">
-                        <form action="" id="ceuillette-form">
-                            <input type="hidden" name="action" value="save">
+                        <form method="POST" id="salaire-form">
+                            <input type="hidden" name="action" value="salaire">
 
                             <div>
 
                                 <div class="mb-3 row">
                                     <label for="html5-text-input" class="col-md-3 col-form-label">Ceuilleur</label>
                                     <div class="col-md-9">
-                                        <select name="idCateg" id="ceuilleur" class="form-select">
+                                        <select name="idCeuilleur" id="ceuilleur" class="form-select">
 
                                             <option value="" selected>Choisisser</option>
-                                            <option value="Homme">sechepinn</option>
-                                            <option value="Femme">larrypage</option>
+
+                                            <?php foreach ($ceuilleurs as $ceuilleur) { ?>
+                                                <option value="<?php echo $ceuilleur['id']?>"><?php echo $ceuilleur['nom'] ?></option>
+                                            <?php } ?>
 
                                         </select>
                                     </div>
@@ -47,19 +54,32 @@
 </div>
 
 <script type="text/javascript">
-    var emp=document.getElementById("ceuilleur");
-    var montant=document.getElementById("salaire");
-    const xhr = new XMLHttpRequest();
+    document.addEventListener("DOMContentLoaded", () => {
+        var emp=document.getElementById("ceuilleur");
+        var montant=document.getElementById("salaire");
+        const salaireForm = document.getElementById("salaire-form");
 
-    emp.addEventListener("change",() =>{
-        xhr.addEventListener("readystatechange", () => {
-            if(xhr.readyState == 4){
-                if(xhr.status == 200){
-                    montant.innerHTML=xhr.response.value();
+
+        emp.addEventListener("change",(ev) =>{
+            ev.preventDefault();
+
+            // console.log("a")
+            const xhr = new XMLHttpRequest();
+
+            let formData = new FormData(salaireForm);
+
+            xhr.addEventListener("readystatechange", () => {
+                if(xhr.readyState == 4){
+                    if(xhr.status == 200){
+                        montant.value = xhr.responseText;
+                    }
                 }
-            }
-        });
-        xhr.open("");
+            });
 
-    });
+            xhr.open("POST", "../controllers/ceuilleurControl.php", true);
+            xhr.send(formData);
+        });
+
+    })
+
 </script>
