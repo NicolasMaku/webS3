@@ -27,14 +27,14 @@
                     </thead>
                     <tbody class="table-border-bottom-0">
                     <?php foreach ($parcelles as $parcelle) { ?>
-                    <tr>
-                        <td>5</td>
-                        <td>500 HA</td>
-                        <td>Black Tea</td>
-                        <td><a href=""><button type="button" class="btn rounded-pill btn-outline-info">Modifier</button></a></td>
-                        <td><a href=""><button type="button" class="btn rounded-pill btn-outline-danger">Supprimer</button></a></td>
+                        <tr>
+                            <td><?php echo $parcelle['numero']?></td>
+                            <td><?php echo $parcelle['surface']?></td>
+                            <td><?php echo $parcelle['id_variete_the']?></td>
+                            <td><a href="../template/backModel.php?page=../pages/insererParcelle.php&action=update&idParcelle=<?php echo $parcelle['numero'] ?>"><button type="button" class="btn rounded-pill btn-outline-info">Modifier</button></a></td>
+                            <td><a href=""><button type="button" class="btn rounded-pill btn-outline-danger">Supprimer</button></a></td>
 
-                    </tr>
+                        </tr>
                     <?php } ?>
                     </tbody>
                 </table>
