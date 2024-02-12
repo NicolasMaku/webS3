@@ -188,6 +188,20 @@ body {
     animation-delay: 0.6s;
 }
 
+.a8 {
+    animation-delay: 0.37s;
+}
+
+.error{
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #a40101;
+    background-color: rgba(246, 111, 111, 0.38);
+    border: solid 1px #a40101;
+    border-radius: 5px;
+}
+
 @keyframes move {
     0% {
         opacity: 0;

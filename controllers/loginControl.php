@@ -16,7 +16,7 @@ switch ($action){
             }
 
             else {
-                header("location:../");
+                header("location:../pages/login.php?error=Invalid email or password");
                 exit();
             }
 
@@ -27,11 +27,4 @@ switch ($action){
     case "verify-email":
 
     default:
-/*        $id_user = testLogin("utilisateur1@email.co", "motdepasse1");
-        echo $id_user;*/
-//        echo "hello";
-
 }
-//$id_user = testLogin("admin1@email.com", "adminpassword");
-//echo $id_user;
-//echo "a";
