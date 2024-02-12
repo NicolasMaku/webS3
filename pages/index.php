@@ -170,7 +170,14 @@ $page=$_GET['page'];
             <div data-i18n="Tables">Tables</div>
           </a>
         </li>
-        <!-- Data Tables -->
+        <!--lastna -->
+
+        <li class="menu-item">
+          <a href="index.php?page=../template/saisieCeuillette.php" class="menu-link">
+            <i class='menu-icon bx bxs-leaf'></i>
+            <div data-i18n="Tables">Saisie de ceuillette</div>
+          </a>
+        </li>
 
 
 
