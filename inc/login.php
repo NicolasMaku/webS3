@@ -5,6 +5,7 @@
     function testLogin($email,$password) {
         $sql = "select * from the_user where email=:email and password=:password";
         $requete = connect()->prepare($sql);
+
         $requete->bindValue(':email',$email);
         $requete->bindValue(':password',$password);
         $requete->execute();
