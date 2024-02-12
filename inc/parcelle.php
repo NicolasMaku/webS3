@@ -54,15 +54,19 @@ function parcelle_insert($surface,$id_variete_the) {
         }
     }
 
-    function parcelle_getByid($id) {
-        $crud = new Crud('the_parcelle',connect());
-        try {
-            return $crud->getById($id);
+    function parcelle_getByid($numero) {
+        $requete = connect()->prepare("SELECT * FROM the_parcelle WHERE numero = :numero");
+        $requete->bindValue(':numero', $numero);
+        $requete->execute();
 
-        }catch (Exception $exception){
-            return $exception->getMessage();
-        }
+        return $requete->fetch(PDO::FETCH_ASSOC);
     }
 
+    function parcelle_variete_getAll() {
+        $crud = new Crud('the_parcelle_variete',connect());
+        return $crud->lister();
+    }
+
+//    var_dump(parcelle_variete_getAll());
 //    parcelle_insert(25,1);
 ?>

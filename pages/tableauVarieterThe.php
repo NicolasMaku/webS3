@@ -2,6 +2,10 @@
     include_once "../inc/function.php";
     $varietes = the_getAll();
 
+    if(isset($_GET['msg'])){
+        alert($_GET['msg']);
+    }
+
 ?>
 
 <!-- Content wrapper -->
@@ -27,11 +31,11 @@
                     <tbody class="table-border-bottom-0">
                     <?php foreach ($varietes as $variete) {?>
                     <tr>
-                        <td><?php ?></td>
-                        <td>Tres occuper</td>
-                        <td>5000000 kg</td>
-                        <td><a href=""><button type="button" class="btn rounded-pill btn-outline-info">Modifier</button></a></td>
-                        <td><a href=""><button type="button" class="btn rounded-pill btn-outline-danger">Supprimer</button></a></td>
+                        <td><?php echo $variete['nom'] ?></td>
+                        <td><?php echo $variete['occupation']?></td>
+                        <td><?php echo $variete['rendement_par_pied']?></td>
+                        <td><a href="../template/backModel.php?page=../pages/insertVarieteThe.php&action=update&idVariete=<?php echo $variete['id']?>"><button type="button" class="btn rounded-pill btn-outline-info">Modifier</button></a></td>
+                        <td><a href="../controllers/varieteTheControl.php?action=delete&idVariete=<?php echo $variete['id']?>"><button type="button" class="btn rounded-pill btn-outline-danger">Supprimer</button></a></td>
                     </tr>
 
                     <?php } ?>

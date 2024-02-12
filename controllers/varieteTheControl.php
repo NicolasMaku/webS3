@@ -17,9 +17,21 @@ switch($action){
 
         break;
 
+    case "update" :
+        $return = the_modify($_POST['idVariete'], $_POST['nom'], $_POST['occupation'], $_POST['rendement']);
+
+        if($return === true){
+            header("location:../template/backModel.php?page=../pages/tableauVarieterThe.php");
+            exit();
+        }
+        else {
+            header("location:../template/backModel.php?page=../pages/insertVarieteThe.php&action=update&idVariete=".$_POST['idVariete']);
+            exit();
+        }
+
 
     case "delete":
-        $return = the_delete($_POST['id']);
+        $return = the_delete($_GET['idVariete']);
 
         if($return === true){
             $msg = "Variete de thé supprimé";
@@ -28,7 +40,7 @@ switch($action){
             $msg = $return;
         }
 
-        header("location:../template/backModel.php?page=../pages/tableauVarieteThe.php&msg=".$msg);
+        header("location:../template/backModel.php?page=../pages/tableauVarieterThe.php&msg=".$msg);
         break;
 
 }

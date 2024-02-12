@@ -56,6 +56,9 @@ CREATE TABLE the_salaire(
     montant DOUBLE(16,2) default 0
 );
 
+CREATE OR REPLACE VIEW the_parcelle_variete as
+SELECT p.*,v.nom from the_parcelle p join the_variete v on p.id_variete_the=v.id;
+
 -- Utilisateurs
 INSERT INTO the_user (username, email, password, admin) VALUES
     ('john_doe', 'john@example.com', 'password123', 1),

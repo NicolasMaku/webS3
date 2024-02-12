@@ -43,8 +43,8 @@
         return $depense/getPoidsTotalCeuillette_intervalle($date1,$date2);
     }
 
-    echo getPoidsTotalCeuillette_intervalle("2023-2-1","2026-2-10") . "\n";
-    echo getPoidsRestantParcelle_intervalle("2023-2-1","2026-2-10") . "\n";
-    echo getCoutRevientKg_intervalle("2023-2-1","2026-2-10") . "\n";
-    echo getCoutRevientKg();
+//    echo getPoidsTotalCeuillette_intervalle("2023-2-1","2026-2-10") . "\n";
+//    echo getPoidsRestantParcelle_intervalle("2023-2-1","2026-2-10") . "\n";
+//    echo getCoutRevientKg_intervalle("2023-2-1","2026-2-10") . "\n";
+//    echo getCoutRevientKg();
 ?>
