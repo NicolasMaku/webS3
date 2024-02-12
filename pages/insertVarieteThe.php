@@ -7,7 +7,7 @@
                 <div class="card mb-4">
                     <h5 class="card-header">Insere une variete de the</h5>
                     <div class="card-body">
-                        <form action="" id="ceuillette-form">
+                        <form action="" id="variete-form">
                             <input type="hidden" name="action" value="save">
 
                             <div>
@@ -15,7 +15,7 @@
                                 <div class="mb-3 row">
                                     <label for="html5-text-input" class="col-md-3 col-form-label">Nom Variete</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="html5-text-input" class="form-control" name="">
+                                        <input type="text" id="html5-text-input" class="form-control" name="nom">
 
                                     </div>
                                 </div>
@@ -23,7 +23,7 @@
                                 <div class="mb-3 row">
                                     <label for="html5-text-input" class="col-md-3 col-form-label">Occupation</label>
                                     <div class="col-md-9">
-                                        <input type="number" id="html5-text-input" class="form-control" name="">
+                                        <input type="number" id="html5-text-input" class="form-control" name="occupation">
 
                                     </div>
                                 </div>
@@ -49,3 +49,30 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        let form = document.getElementById("variete-form");
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            let formData = new FormData(form);
+            const xhr = new XMLHttpRequest();
+
+
+
+            xhr.addEventListener("readystatechange", () => {
+                if(xhr.readyState == 4){
+                    if(xhr.status == 200){
+                        alert(xhr.responseText);
+                    }
+                }
+            });
+
+            xhr.open("POST", "../controllers/varieteTheControl.php", true);
+            xhr.send(formData);
+        });
+    })
+</script>
+
