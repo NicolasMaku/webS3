@@ -1,3 +1,9 @@
+<?php
+    include_once "../inc/function.php";
+    $varietes = the_getAll();
+
+?>
+
 <!-- Content wrapper -->
 <div class="content-wrapper">
     <!-- Content -->
@@ -19,15 +25,16 @@
                     </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
+                    <?php foreach ($varietes as $variete) {?>
                     <tr>
-                        <td>Black tea</td>
+                        <td><?php ?></td>
                         <td>Tres occuper</td>
                         <td>5000000 kg</td>
                         <td><a href=""><button type="button" class="btn rounded-pill btn-outline-info">Modifier</button></a></td>
                         <td><a href=""><button type="button" class="btn rounded-pill btn-outline-danger">Supprimer</button></a></td>
-
-
                     </tr>
+
+                    <?php } ?>
                     </tbody>
                 </table>
             </div>
