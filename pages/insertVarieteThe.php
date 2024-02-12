@@ -1,4 +1,13 @@
+<?php
+    include_once "../inc/function.php";
+    $is_update = false;
+    $variete = null;
 
+    if(isset($_GET['action'])){
+        $is_update = true;
+        $variete = the_getByid($_GET['idVariete']);
+    }
+?>
 
 
 <div class="content-wrapper">
@@ -10,15 +19,21 @@
                 <div class="card mb-4">
                     <h5 class="card-header">Insere une variete de the</h5>
                     <div class="card-body">
-                        <form action="" id="variete-form">
-                            <input type="hidden" name="action" value="save">
+                        <form action="../controllers/varieteTheControl.php" method="POST" id="<?php echo $is_update ? "" : "variete-form"?>">
+                            <input type="hidden" name="action" value="<?php echo $is_update ? "update" : "save"?>">
+
+                            <?php if($is_update) {?>
+                                <input type="hidden" name="idVariete" value="<?php echo $variete['id'] ?>">
+                            <?php } ?>
 
                             <div>
 
                                 <div class="mb-3 row">
                                     <label for="html5-text-input" class="col-md-3 col-form-label">Nom Variete</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="html5-text-input" class="form-control" name="nom">
+                                        <input type="text" id="html5-text-input" class="form-control" name="nom"
+                                        value="<?php echo $is_update ? $variete['nom'] : ""?>"
+                                        >
 
                                     </div>
                                 </div>
@@ -26,7 +41,9 @@
                                 <div class="mb-3 row">
                                     <label for="html5-text-input" class="col-md-3 col-form-label">Occupation</label>
                                     <div class="col-md-9">
-                                        <input type="number" id="html5-text-input" class="form-control" name="occupation">
+                                        <input type="number" id="html5-text-input" class="form-control" name="occupation"
+                                        value="<?php echo $is_update ? $variete['occupation'] : ""?>"
+                                        >
 
                                     </div>
                                 </div>
@@ -36,13 +53,15 @@
                                     <label class="col-sm-3 col-form-label" for="basic-icon-default-email">Rendement par pied</label>
                                     <div class="col-sm-9">
                                         <div class="input-group input-group-merge">
-                                            <input type="number" id="basic-icon-default-email" class="form-control" aria-describedby="basic-icon-default-email2" name="rendement">
+                                            <input type="number" id="basic-icon-default-email" class="form-control" aria-describedby="basic-icon-default-email2" name="rendement"
+                                            value="<?php echo $is_update ? $variete['rendement_par_pied'] : ""  ?>"
+                                            >
                                             <span id="basic-icon-default-email2" class="input-group-text">KG</span>
                                         </div>
                                     </div>
                                 </div>
 
-                                <input type="submit" class="btn btn-primary" value="Ajouter" style="background-color: green">
+                                <input type="submit" class="btn btn-primary" value="<?php echo $is_update ? "Modifier" : "Ajouter"?>" style="background-color: green">
 
                             </div>
                         </form>
