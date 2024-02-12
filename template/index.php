@@ -186,6 +186,13 @@ $page=$_GET['page'];
           </a>
         </li>
 
+        <li class="menu-item">
+          <a href="index.php?page=../pages/resultat.php" class="menu-link">
+            <i class='menu-icon tf-icons bx bx-table' ></i>
+            <div data-i18n="Tables">Resultat</div>
+          </a>
+        </li>
+
 
 
 

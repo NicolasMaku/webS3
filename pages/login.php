@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div class="slide" id="slide"></div>
+    <div class="slide" id="slide" style="background-image: url('../assets/img/backgrounds/La_cueillette_du_the.jpg')")"></div>
 
 
     <div class="right" id="right">
