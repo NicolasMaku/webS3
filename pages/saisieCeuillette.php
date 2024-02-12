@@ -1,3 +1,10 @@
+<?php
+    include_once "../inc/function.php";
+    $ceuilleurs = ceuilleur_getAll();
+    $parcelles = parcelle_getAll();
+?>
+
+
 <!-- Content wrapper -->
 <div class="content-wrapper">
     <!-- Content -->
@@ -8,7 +15,9 @@
                 <div class="card mb-4">
                     <h5 class="card-header">Saisie de Ceuillette</h5>
                     <div class="card-body">
-                        <form action="index.php">
+                        <form action="" id="ceuillette-form">
+                            <input type="hidden" name="action" value="save">
+
                             <div>
                                 <div class="mb-3 row">
                                     <label for="html5-date-input" class="col-md-2 col-form-label">Date</label>
@@ -20,9 +29,11 @@
                                 <div class="mb-3 row">
                                     <label for="html5-text-input" class="col-md-2 col-form-label">Ceuilleur</label>
                                     <div class="col-md-10">
-                                        <select name="ceuilleur" id="html5-text-input" class="form-select">
-                                            <option value="0">Rakoto</option>
-                                            <option value="0">Rabe</option>
+                                        <select id="html5-text-input" class="form-select" name="idCeuil">
+                                            <?php foreach ($ceuilleurs as $ceuilleur) {?>
+                                                <option value="<?php echo $ceuilleur['id']?>"> <?php echo $ceuilleur['nom']?></option>
+                                            <?php } ?>
+
                                         </select>
                                     </div>
                                 </div>
@@ -30,9 +41,10 @@
                                 <div class="mb-3 row">
                                     <label for="html5-text-input" class="col-md-2 col-form-label">Parcelle</label>
                                     <div class="col-md-10">
-                                        <select name="parcelle" id="html5-text-input" class="form-select">
-                                            <option value="0">Parcelle 1</option>
-                                            <option value="0">Parcelle 2</option>
+                                        <select id="html5-text-input" class="form-select" name="idParc">
+                                            <?php foreach ($parcelles as $parcelle) {?>
+                                                <option value="<?php echo $parcelle['numero'] ?>">Parcelle N°<?php echo $parcelle['numero'] ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                 </div>
@@ -47,7 +59,7 @@
                                     </div>
                                 </div>
 
-                                <input type="submit" class="btn btn-primary" value="Send" style="background-color: green">
+                                <input type="submit" class="btn btn-primary" value="Ajouter" style="background-color: green">
 
                             </div>
                         </form>
@@ -57,3 +69,30 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        let ceuilletteForm = document.getElementById("ceuillette-form");
+
+        ceuilletteForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            let formData = new FormData(ceuilletteForm);
+            const xhr = new XMLHttpRequest();
+
+
+
+            xhr.addEventListener("readystatechange", () => {
+               if(xhr.readyState == 4){
+                   if(xhr.status == 200){
+                       alert(xhr.responseText);
+                   }
+               }
+            });
+
+            xhr.open("POST", "../controllers/ceuilletteControl.php", true);
+            xhr.send(formData);
+        });
+    })
+
+</script>
