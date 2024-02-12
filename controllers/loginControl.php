@@ -11,12 +11,12 @@ switch ($action){
             if($id_user !== false){
                 session_start();
                 $_SESSION['idUser'] = $id_user;
-                header("location:../template/");
+                header("location:../template/index.php?page=../pages/cards.php");
                 exit();
             }
 
             else {
-                header("location:  ");
+                header("location:../");
                 exit();
             }
 
@@ -27,8 +27,8 @@ switch ($action){
     case "verify-email":
 
     default:
-        $id_user = testLogin("utilisateur1@email.co", "motdepasse1");
-        echo $id_user;
+/*        $id_user = testLogin("utilisateur1@email.co", "motdepasse1");
+        echo $id_user;*/
 //        echo "hello";
 
 }
