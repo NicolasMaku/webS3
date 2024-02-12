@@ -1,3 +1,17 @@
+<?php
+    include_once "../inc/function.php";
+    $varietes = the_getAll();
+    $is_update = false;
+    $parcelle = null;
+
+    if(isset($_GET['action'])){
+        $is_update = true;
+        $parcelle = parcelle_getByid($_GET['idParcelle']);
+    }
+
+?>
+
+
 <div class="content-wrapper">
     <!-- Content -->
 
@@ -7,25 +21,22 @@
                 <div class="card mb-4">
                     <h5 class="card-header">Inserer une Parcelle</h5>
                     <div class="card-body">
-                        <form action="" id="ceuillette-form">
-                            <input type="hidden" name="action" value="save">
+                        <form action="" id="parcelle-form">
+                            <input type="hidden" name="action" value="<?php echo $is_update ? "update" : "save"?>">
+
+                            <?php if($is_update) { ?>
+                                <input type="hidden" name="idParcelle" value="<?php echo $parcelle['numero']?>">
+                            <?php } ?>
 
                             <div>
-
-                                <div class="mb-3 row">
-                                    <label for="html5-text-input" class="col-md-3 col-form-label">Num parcelle</label>
-                                    <div class="col-md-9">
-                                        <input type="number" id="html5-text-input" class="form-control" name="">
-
-                                    </div>
-                                </div>
-
 
                                 <div class="row mb-3">
                                     <label class="col-sm-3 col-form-label" for="basic-icon-default-email">Surface en HA</label>
                                     <div class="col-sm-9">
                                         <div class="input-group input-group-merge">
-                                            <input type="number" id="basic-icon-default-email" class="form-control" aria-describedby="basic-icon-default-email2" name="rendement">
+                                            <input type="number" id="basic-icon-default-email" class="form-control" aria-describedby="basic-icon-default-email2" name="surface"
+                                            value="<?php echo $is_update ? $parcelle['surface'] : ""?>"
+                                            >
                                             <span id="basic-icon-default-email2" class="input-group-text">HA</span>
                                         </div>
                                     </div>
@@ -34,10 +45,14 @@
                                 <div class="mb-3 row">
                                     <label for="html5-text-input" class="col-md-3 col-form-label">Variete de the plante</label>
                                     <div class="col-md-9">
-                                        <select name="idCateg" id="html5-text-input" class="form-select">
-
-                                                <option value="0">Black Tea</option>
-                                                <option value="0">White Tea</option>
+                                        <select name="idVariete" id="html5-text-input" class="form-select">
+                                            <?php foreach ($varietes as $variete){ ?>
+                                                <option value="<?php echo $variete['id']?>"
+                                                     <?php $is_update ? ($variete['id'] == $parcelle['numero'] ? "selected": "") : ""  ?>
+                                                >
+                                                    <?php echo $variete['nom'] ?>
+                                                </option>
+                                            <?php } ?>
 
                                         </select>
                                     </div>

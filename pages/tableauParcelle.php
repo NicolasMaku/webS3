@@ -1,3 +1,10 @@
+<?php
+    include_once "../inc/function.php";
+    $parcelles = parcelle_getAll();
+
+?>
+
+
 <!-- Content wrapper -->
 <div class="content-wrapper">
     <!-- Content -->
@@ -19,6 +26,7 @@
                     </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
+                    <?php foreach ($parcelles as $parcelle) { ?>
                     <tr>
                         <td>5</td>
                         <td>500 HA</td>
@@ -27,6 +35,7 @@
                         <td><a href=""><button type="button" class="btn rounded-pill btn-outline-danger">Supprimer</button></a></td>
 
                     </tr>
+                    <?php } ?>
                     </tbody>
                 </table>
             </div>
