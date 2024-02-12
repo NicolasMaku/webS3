@@ -80,6 +80,6 @@ function parcelle_insert($surface,$id_variete_the) {
         return $crud->lister();
     }
 
-//    var_dump(parcelle_getByid(1));
+//    var_dump(parcelle_variete_getAll());
 //    parcelle_insert(25,1);
 ?>
