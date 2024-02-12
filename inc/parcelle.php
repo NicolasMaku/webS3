@@ -55,7 +55,7 @@ function parcelle_insert($surface,$id_variete_the) {
     }
 
     function parcelle_getByid($numero) {
-        $requete = $this->connexion->prepare("SELECT * FROM {$this->table} WHERE numero = :numero");
+        $requete = connect()->prepare("SELECT * FROM the_parcelle WHERE numero = :numero");
         $requete->bindValue(':numero', $numero);
         $requete->execute();
 
