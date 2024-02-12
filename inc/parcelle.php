@@ -54,5 +54,15 @@ function parcelle_insert($surface,$id_variete_the) {
         }
     }
 
+    function parcelle_getByid($id) {
+        $crud = new Crud('the_parcelle',connect());
+        try {
+            return $crud->getById($id);
+
+        }catch (Exception $exception){
+            return $exception->getMessage();
+        }
+    }
+
 //    parcelle_insert(25,1);
 ?>

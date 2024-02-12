@@ -9,6 +9,4 @@
     require_once "ceuilleur.php";
     require_once "parcelle.php";
     require_once "categorie-depense.php";
-    require_once "variete-the.php";
-    require_once "salaire.php";
 ?>

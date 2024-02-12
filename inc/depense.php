@@ -55,6 +55,16 @@
         }
     }
 
+    function depense_getByid($id) {
+        $crud = new Crud('the_depense',connect());
+        try {
+            return $crud->getById($id);
+
+        }catch (Exception $exception){
+            return $exception->getMessage();
+        }
+    }
+
 //    depense_delete(4);
 //    depense_insert("2022-03-12",2,500.0);
 
