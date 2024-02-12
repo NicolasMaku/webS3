@@ -11,12 +11,12 @@ switch ($action){
             if($id_user !== false){
                 session_start();
                 $_SESSION['idUser'] = $id_user;
-                header("location:  ");
+                header("location:../template/index.php?page=../pages/cards.php");
                 exit();
             }
 
             else {
-                header("location:  ");
+                header("location:../pages/login.php?error=Invalid email or password");
                 exit();
             }
 
@@ -27,11 +27,4 @@ switch ($action){
     case "verify-email":
 
     default:
-        $id_user = testLogin("utilisateur1@email.co", "motdepasse1");
-        echo $id_user;
-//        echo "hello";
-
 }
-$id_user = testLogin("utilisateur1@email.com", "motdepasse1");
-echo $id_user;
-//echo "a";

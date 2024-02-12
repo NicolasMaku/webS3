@@ -13,10 +13,17 @@
                 <h2 class="animation a1">Welcome Back</h2>
                 <h4 class="animation a2">Log in to your account using email and password</h4>
             </div>
+
+            <?php if(isset($_GET['error'])){ ?>
+                <div class="error animation a8">
+                    <?php echo $_GET['error'] ?>
+                </div>
+            <?php } ?>
+
             <form action="../controllers/loginControl.php" method="POST" class="form" id="formlog">
                 <input type="hidden" name="action" value="login">
-                <input type="email" class="form-field animation a3" placeholder="Email Address">
-                <input type="password" class="form-field animation a4" placeholder="Password">
+                <input type="email" class="form-field animation a3" placeholder="Email Address" name="email" value="utilisateur1@email.com" required>
+                <input type="password" class="form-field animation a4" placeholder="Password" name="password" value="motdepasse1" required>
                 <p class="animation a5"> <a href="#" style="padding-right: 40%" id="sign-up-btn">Sign up</a> <a href="#">Forgot Password</a></p>
                 <input type="submit"  value="LOGIN" class="button animation a6">
             </form>
@@ -65,6 +72,7 @@
         leftDiv.querySelector(".a4").className = "animation-reverse a4 form-field";
         leftDiv.querySelector(".a5").className = "animation-reverse a5";
         leftDiv.querySelector(".a6").className = "animation-reverse a6 button";
+        leftDiv.querySelector(".a8").className = "animation-reverse a8 error";
         leftDiv.style.visibility = "hidden";
 
         rightDiv.querySelector(".a1").className = "animation a1";
@@ -96,6 +104,8 @@
         leftDiv.querySelector(".a4").className = "animation a4 form-field";
         leftDiv.querySelector(".a5").className = "animation a5";
         leftDiv.querySelector(".a6").className = "animation a6 button";
+        leftDiv.querySelector(".a8").className = "animation a8 error";
+
         leftDiv.style.visibility = "visible";
 
         slideDiv.style.transform = "translateX(45%)";
