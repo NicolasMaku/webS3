@@ -20,14 +20,20 @@
                                 <div class="mb-3 row">
                                     <label for="html5-text-input" class="col-md-2 col-form-label">Ceuilleur</label>
                                     <div class="col-md-10">
-                                        <input class="form-control" type="text" id="html5-text-input" name="ceuilleur">
+                                        <select name="ceuilleur" id="html5-text-input" class="form-select">
+                                            <option value="0">Rakoto</option>
+                                            <option value="0">Rabe</option>
+                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="mb-3 row">
                                     <label for="html5-text-input" class="col-md-2 col-form-label">Parcelle</label>
                                     <div class="col-md-10">
-                                        <input class="form-control" type="text" id="html5-text-input" name="parcelle">
+                                        <select name="parcelle" id="html5-text-input" class="form-select">
+                                            <option value="0">Parcelle 1</option>
+                                            <option value="0">Parcelle 2</option>
+                                        </select>
                                     </div>
                                 </div>
 
