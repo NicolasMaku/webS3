@@ -6,32 +6,32 @@ $action = get_action($_GET, $_POST);
 switch ($action){
 
     case "login":
-//            $login_info =  array(
-//                "email" => $_POST['email'],
-//                "password" => $_POST['password']
-//            );
-//
-//            $id_user = ;
-//
-//            if($is_valid !== false){
-//                session_start();
-//                $_SESSION['idUser'] = $is_valid;
-//                header("location:  ");
-//                exit();
-//            }
-//
-//            else {
-//                header("location:  ");
-//                exit();
-//            }
+            $id_user = testLogin($_POST['email'], $_POST['password']);
+
+            if($id_user !== false){
+                session_start();
+                $_SESSION['idUser'] = $id_user;
+                header("location:  ");
+                exit();
+            }
+
+            else {
+                header("location:  ");
+                exit();
+            }
 
 
     case "inscription":
             break;
 
-    case "varify-email":
+    case "verify-email":
 
     default:
+        $id_user = testLogin("utilisateur1@email.co", "motdepasse1");
+        echo $id_user;
 //        echo "hello";
 
 }
+$id_user = testLogin("utilisateur1@email.com", "motdepasse1");
+echo $id_user;
+//echo "a";
