@@ -128,7 +128,7 @@ a.bg-primary:hover, a.bg-primary:focus {
 }
 
 .border-label-primary {
-  border: 3px solid #c3c4ff !important;
+  border: 3px solid #caffc3 !important;
 }
 
 .border-light-primary {
@@ -258,7 +258,7 @@ button.list-group-item-primary.active {
   color: #fff !important;
   background-color: #015415!important;
   border-color: #015415!important;
-  box-shadow: 0 0.125rem 0.25rem 0 rgba(105, 108, 255, 0.4) !important;
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(107, 255, 105, 0.4) !important;
   transform: translateY(-1px) !important;
 }
 .btn-check:focus + .btn-outline-primary, .btn-outline-primary:focus {
@@ -479,13 +479,13 @@ button.list-group-item-primary.active {
   color: #e0e1ff;
 }
 .menu.bg-primary .menu-inner-shadow {
-  background: linear-gradient(#22781d 41%, rgba(105, 108, 255, 0.11) 95%, rgba(105, 108, 255, 0));
+  background: linear-gradient(#22781d 41%, rgba(105, 255, 152, 0.11) 95%, rgba(105, 108, 255, 0));
 }
 .menu.bg-primary .menu-text {
   color: #fff;
 }
 .menu.bg-primary .menu-header {
-  color: #c2c4ff;
+  color: #c2ffb0;
 }
 .menu.bg-primary hr,
 .menu.bg-primary .menu-divider,
@@ -496,7 +496,7 @@ button.list-group-item-primary.active {
   background-color: rgba(255, 255, 255, 0.15);
 }
 .menu.bg-primary .menu-block::before {
-  background-color: #c2c4ff;
+  background-color: #c2ffb0;
 }
 .menu.bg-primary .menu-inner > .menu-item.open .menu-item.open > .menu-toggle::before {
   background-color: #83ff98;
@@ -529,7 +529,7 @@ button.list-group-item-primary.active {
   color: #fff;
 }
 .footer.bg-primary .footer-link.disabled {
-  color: #b0b2ff !important;
+  color: #c2ffb0 !important;
 }
 .footer.bg-primary .footer-text {
   color: #fff;

@@ -49,7 +49,7 @@ if (isset($_GET['page'])) {
 <body>
 <!-- Layout wrapper -->
 <div class="layout-wrapper layout-content-navbar">
-    <div class="layout-container">
+    <div class="layout-container" style="background-color: rgba(0,217,46,0.1)!important;">
         <!-- Menu -->
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" data-bg-class="bg-menu-theme">
@@ -70,13 +70,16 @@ if (isset($_GET['page'])) {
 
             <ul class="menu-inner py-1 ps">
 
+                <li class="menu-item" style=";text-align: center!important;">
 
+                    <div data-i18n="Basic" style="font-size: 20px;color: #690000;margin-top: 10px"> <i class=' menu-icon bx bx-street-view'></i> <b>Admin</b></div>
 
-
-
+                </li>
 
                 <!-- Components -->
                 <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
+
+
                 <!-- Cards -->
                 <li class="menu-item">
                     <a href="backModel.php?page=cards.php" class="menu-link">

@@ -17,6 +17,12 @@
                                 <p class="mb-4">
                                     Voir tout les resultat Global de l'entreprise
                                 </p>
+                                <form action="">
+                                    <div class="input-group">
+                                        <input type="date" class="form-control" placeholder="Choisisser La date de Resultat" aria-describedby="button-addon2">
+                                        <input class="btn btn-outline-primary" type="submit" id="button-addon2" value="Afficher">
+                                    </div>
+                                </form>
                             </div>
                         </div>
                         <div class="col-sm-5 text-center text-sm-left">
