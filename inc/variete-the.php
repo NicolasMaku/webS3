@@ -56,6 +56,16 @@
         }
     }
 
+    function the_getByid($id) {
+        $crud = new Crud('the_variete',connect());
+        try {
+            return $crud->getById($id);
+
+        }catch (Exception $exception){
+            return $exception->getMessage();
+        }
+    }
+
 //    echo the_modify(2,"Noire rouge",3.0,3);
 
 ?>
