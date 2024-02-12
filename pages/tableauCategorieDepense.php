@@ -1,3 +1,8 @@
+<?php
+    include_once "../inc/function.php";
+    $categorieDepenses = categorie_depense_getAll();
+?>
+
 <!-- Content wrapper -->
 <div class="content-wrapper">
     <!-- Content -->
@@ -17,12 +22,18 @@
                     </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                    <tr>
-                        <td>Mpangalatra</td>
-                        <td><a href=""><button type="button" class="btn rounded-pill btn-outline-info">Modifier</button></a></td>
-                        <td><a href=""><button type="button" class="btn rounded-pill btn-outline-danger">Supprimer</button></a></td>
 
-                    </tr>
+                    <?php
+                        foreach ($categorieDepenses as $categorieDepense) { ?>
+                            <tr>
+                                <td><?php echo $categorieDepense['nom']; ?></td>
+                                <td><a href="backModel.php?page=../pages/insertCategorieDepense.php&action=update&id=<?php echo $categorieDepense['id']; ?>"><button type="button" class="btn rounded-pill btn-outline-info">Modifier</button></a></td>
+                                <td><a href="../controllers/categorieDepenseControl.php?action=delete&id=<?php echo $categorieDepense['id']; ?>"><button type="button" class="btn rounded-pill btn-outline-danger">Supprimer</button></a></td>
+                            </tr>
+                        <?php }
+                    ?>
+
+
                     </tbody>
                 </table>
             </div>
