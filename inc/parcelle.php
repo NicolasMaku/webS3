@@ -7,7 +7,7 @@
     }
 
     function parcelle_supprimer($id) {
-        $requete = $this->connexion->prepare("DELETE FROM {$this->table} WHERE numero = :id");
+        $requete = connect()->prepare("DELETE FROM the_parcelle WHERE numero = :id");
         $requete->bindValue(':id', $id);
         $requete->execute();
     }
