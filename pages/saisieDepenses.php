@@ -8,7 +8,7 @@
                 <div class="card mb-4">
                     <h5 class="card-header">Saisie de Depenses</h5>
                     <div class="card-body">
-                        <form action="../template/index.php">
+                        <form action="../template/frontModel.php">
                             <div>
                                 <div class="mb-3 row">
                                     <label for="html5-date-input" class="col-md-2 col-form-label">Date</label>

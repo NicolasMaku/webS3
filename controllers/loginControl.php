@@ -11,7 +11,7 @@ switch ($action){
             if($id_user !== false){
                 session_start();
                 $_SESSION['idUser'] = $id_user;
-                header("location:../template/index.php?page=../pages/cards.php");
+                header("location:../template/frontModel.php?page=../pages/cards.php");
                 exit();
             }
 
