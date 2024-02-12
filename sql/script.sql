@@ -36,6 +36,19 @@ CREATE TABLE the_ceuillette(
     FOREIGN KEY (id_parcelle) REFERENCES the_parcelle(numero)
 );
 
+CREATE TABLE the_categorie_depense(
+    id SMALLINT auto_increment primary key,
+    nom VARCHAR(50)
+);
+
+CREATE TABLE the_depense(
+    id SMALLINT auto_increment primary key,
+    date date,
+    id_categorie SMALLINT,
+    montant DOUBLE(16,2),
+    FOREIGN KEY (id_categorie) REFERENCES the_categorie_depense(id)
+);
+
 -- Utilisateurs
 INSERT INTO the_user (username, email, password, admin) VALUES
     ('utilisateur1', 'utilisateur1@email.com', 'motdepasse1', 0),
@@ -66,3 +79,14 @@ INSERT INTO the_ceuillette (date, id_ceuilleur, id_parcelle, poids_ceuilli) VALU
     ('2024-02-12', 1, 1, 5.25),
     ('2024-02-13', 2, 2, 8.75),
     ('2024-02-14', 3, 1, 6.50);
+
+-- categorie depense
+INSERT INTO the_categorie_depense (nom) VALUES
+    ('engrais'),
+    ('Carburant'),
+    ('Logistique');
+
+-- Depense
+INSERT INTO the_depense (date, id_categorie, montant) VALUES
+  ('2024-02-12', 1, 50.00),
+  ('2024-02-13', 2, 1200.00);

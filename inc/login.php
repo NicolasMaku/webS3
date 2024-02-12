@@ -8,8 +8,11 @@
 
         $requete->bindValue(':email',$email);
         $requete->bindValue(':password',$password);
+        $requete->execute();
 
         if ($requete->rowCount() == 1) return $requete->fetch(PDO::FETCH_ASSOC)['id'];
         else return false;
     }
+
+//    echo testLogin("utilisateur1@email.com","motdepasse1");
 ?>
