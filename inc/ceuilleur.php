@@ -1,10 +1,10 @@
 <?php
     include_once "Crud.php";
     include_once "base.php";
-    function getAll() {
+    function ceuilleur_getAll() {
         $crud = new Crud('the_ceuilleur',connect());
         return $crud->lister();
     }
 
-    var_dump(getAll());
+//    var_dump(getAll());
 ?>

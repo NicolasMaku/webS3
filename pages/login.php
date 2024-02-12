@@ -72,7 +72,9 @@
         leftDiv.querySelector(".a4").className = "animation-reverse a4 form-field";
         leftDiv.querySelector(".a5").className = "animation-reverse a5";
         leftDiv.querySelector(".a6").className = "animation-reverse a6 button";
-        leftDiv.querySelector(".a8").className = "animation-reverse a8 error";
+        if(leftDiv.querySelector(".a8") !== null) {
+            leftDiv.querySelector(".a8").className = "animation-reverse a8 error";
+        }
         leftDiv.style.visibility = "hidden";
 
         rightDiv.querySelector(".a1").className = "animation a1";
@@ -104,7 +106,9 @@
         leftDiv.querySelector(".a4").className = "animation a4 form-field";
         leftDiv.querySelector(".a5").className = "animation a5";
         leftDiv.querySelector(".a6").className = "animation a6 button";
-        leftDiv.querySelector(".a8").className = "animation a8 error";
+        if(leftDiv.querySelector(".a8") !== null) {
+            leftDiv.querySelector(".a8").className = "animation a8 error";
+        }
 
         leftDiv.style.visibility = "visible";
 
