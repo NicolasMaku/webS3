@@ -15,8 +15,9 @@
                                 <div class="mb-3 row">
                                     <label for="html5-text-input" class="col-md-3 col-form-label">Ceuilleur</label>
                                     <div class="col-md-9">
-                                        <select name="idCateg" id="html5-text-input" class="form-select">
+                                        <select name="idCateg" id="ceuilleur" class="form-select">
 
+                                            <option value="" selected>Choisisser</option>
                                             <option value="Homme">sechepinn</option>
                                             <option value="Femme">larrypage</option>
 
@@ -28,7 +29,7 @@
                                     <label class="col-sm-3 col-form-label" for="basic-icon-default-email">Salaire</label>
                                     <div class="col-sm-9">
                                         <div class="input-group input-group-merge">
-                                            <input type="number" id="basic-icon-default-email" class="form-control" aria-describedby="basic-icon-default-email2" name="">
+                                            <input type="number" id="salaire" class="form-control" aria-describedby="basic-icon-default-email2" name="">
                                             <span id="basic-icon-default-email2" class="input-group-text">AR</span>
                                         </div>
                                     </div>
@@ -44,3 +45,21 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    var emp=document.getElementById("ceuilleur");
+    var montant=document.getElementById("salaire");
+    const xhr = new XMLHttpRequest();
+
+    emp.addEventListener("change",() =>{
+        xhr.addEventListener("readystatechange", () => {
+            if(xhr.readyState == 4){
+                if(xhr.status == 200){
+                    montant.innerHTML=xhr.response.value();
+                }
+            }
+        });
+        xhr.open("");
+
+    });
+</script>
