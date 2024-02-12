@@ -47,6 +47,15 @@
         $crud->delete($id);
     }
 
+    function ceuilleur_getByid($id) {
+        $crud = new Crud('the_ceuilleur',connect());
+        try {
+            return $crud->getById($id);
+
+        }catch (Exception $exception){
+            return $exception->getMessage();
+        }
+    }
 
 //    ceuilleur_insert("Kevin","Homme","2018-12-4");
 //    var_dump(getAll());
