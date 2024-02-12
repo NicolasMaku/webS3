@@ -49,7 +49,7 @@
                                         <select name="idVariete" id="html5-text-input" class="form-select">
                                             <?php foreach ($varietes as $variete){ ?>
                                                 <option value="<?php echo $variete['id']?>"
-                                                     <?php $is_update ? ($variete['id'] == $parcelle['numero'] ? "selected": "") : ""  ?>
+                                                     <?php echo $is_update ? ($variete['id'] == $parcelle['id_variete_the'] ? "selected": "") : ""  ?>
                                                 >
                                                     <?php echo $variete['nom'] ?>
                                                 </option>
@@ -60,7 +60,7 @@
                                 </div>
 
 
-                                <input type="submit" class="btn btn-primary" value="Ajouter" style="background-color: green">
+                                <input type="submit" class="btn btn-primary" value="<?php echo $is_update ? "Modifier" : "Ajouter" ?>" style="background-color: green">
 
                             </div>
                         </form>
