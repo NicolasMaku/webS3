@@ -1,0 +1,260 @@
+* { box-sizing: border-box; }
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap');
+
+
+body {
+    font-family: 'Rubik', sans-serif;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.hidden{
+    animation-name: hide;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-delay: 0s;
+}
+
+.left {
+    position: absolute;
+    overflow: hidden;
+    width: 30%;
+    height: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.right {
+    position: absolute;
+    overflow: hidden;
+    width: 30%;
+    height: 100%;
+    float: right;
+    right: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide {
+    /* width: 100%; */
+    /* position: sticky; */
+    width: 70%;
+    height: 100%;
+    z-index: 50;
+    right: 0;
+    background-image: url(https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 1s ease-in-out;
+    transform: translateX(45%);
+    box-shadow: 0px 0px 20px 15px #23232343;
+    /* transform: translateX(35%); */
+
+}
+
+.leftback {
+    position: fixed;
+    width: 70%;
+    height: 100%;
+    z-index: 50;
+    left: 0;
+    background-image: url(https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+
+.header > h2 {
+    margin: 0;
+    color: #4f46a5;
+}
+
+.header > h4 {
+    margin-top: 10px;
+    font-weight: normal;
+    font-size: 15px;
+    color: rgba(0,0,0,.4);
+}
+
+.form {
+    /* max-width: 80%; */
+    display: flex;
+    flex-direction: column;
+}
+
+.formhide {
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    animation: hideform;
+    animation-delay: 0s;
+    visibility: hidden;
+}
+
+.form > p {
+    text-align: right;
+}
+
+.form > p > a {
+    color: #000;
+    font-size: 14px;
+}
+
+.form-field {
+    height: 46px;
+    padding: 0 16px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Rubik', sans-serif;
+    outline: 0;
+    transition: .2s;
+    margin-top: 20px;
+}
+
+.form-field:focus {
+    border-color: #0f7ef1;
+}
+
+.form > button {
+    padding: 12px 10px;
+    border: 0;
+    background: linear-gradient(to right, #de48b5 0%,#0097ff 100%);
+    border-radius: 3px;
+    margin-top: 10px;
+    color: #fff;
+    letter-spacing: 1px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.animation {
+    animation-name: move;
+    animation-duration: .3s;
+    animation-fill-mode: both;
+    animation-delay: 0s;
+}
+
+.animation-reverse {
+    animation-name: move-back;
+    animation-duration: .3s;
+    animation-fill-mode: both;
+    animation-delay: 0s;
+}
+
+.a1 {
+    animation-delay: 0.3s;
+}
+
+.a2 {
+    animation-delay: 0.35s;
+}
+
+.a3 {
+    animation-delay: 0.4s;
+}
+
+.a4 {
+    animation-delay: 0.45s;
+}
+
+.a5 {
+    animation-delay: 0.50s;
+}
+
+.a6 {
+    animation-delay: 0.55s;
+}
+
+.a7 {
+    animation-delay: 0.6s;
+}
+
+@keyframes move {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-40px);
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+}
+
+@keyframes move-back {
+    0% {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-40px);
+    }
+}
+
+@keyframes left {
+    0% {
+        opacity: 0;
+        width: 0;
+    }
+
+    100% {
+        opacity: 1;
+        padding: 20px 40px;
+        width: 440px;
+    }
+}
+
+@keyframes hide {
+    0% {
+        opacity: 1;
+        padding: 20px 40px;
+        width: 440px;
+        visibility: visible;
+
+    }
+
+    100% {
+        opacity: 0;
+        width: 0;
+        padding: 0 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes hideform {
+    0% {
+        opacity: 1;
+
+        visibility: visible;
+
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
