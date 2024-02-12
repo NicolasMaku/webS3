@@ -49,7 +49,7 @@
 
         try {
             $crud->delete($id);
-            return "variete bien supprimé";
+            return true;
 
         }catch (Exception $exception){
             return $exception->getMessage();

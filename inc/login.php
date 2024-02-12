@@ -10,9 +10,12 @@
         $requete->bindValue(':password',$password);
         $requete->execute();
 
-        if ($requete->rowCount() == 1) return $requete->fetch(PDO::FETCH_ASSOC)['id'];
+        if ($requete->rowCount() == 1) {
+            $user = $requete->fetch(PDO::FETCH_ASSOC);
+            return [$user['id'],$user['admin']];
+        }
         else return false;
     }
 
-//    echo testLogin("utilisateur1@email.com","motdepasse1");
+//    var_dump(testLogin("john@example.com","password123"));
 ?>
