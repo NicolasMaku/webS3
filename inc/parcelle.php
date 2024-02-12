@@ -36,7 +36,7 @@ function parcelle_insert($surface,$id_variete_the) {
     }
 }
 
-    function parcelle_modify($id,$surface,$id_variete_the) {
+    function parcelle_modify($numero,$surface,$id_variete_the) {
 
         $parcelle = [
             "surface" => $surface,
@@ -45,8 +45,21 @@ function parcelle_insert($surface,$id_variete_the) {
 
         try {
             $crud = new Crud('the_parcelle',connect());
-            $crud->update($id,$parcelle);
+            $modification = '';
+            foreach ($parcelle as $cle => $valeur) {
+                $modification .= "{$cle} = :{$cle}, ";
+            }
+            $modification = rtrim($modification, ', ');
 
+            $requete = connect()->prepare("UPDATE the_parcelle SET {$modification} WHERE numero = :numero");
+
+            $requete->bindValue(':numero', $numero);
+
+            foreach ($parcelle as $cle => $valeur) {
+                $requete->bindValue(':' . $cle, $valeur);
+            }
+
+            $requete->execute();
             return true;
 
         }catch (Exception $exception){
@@ -67,6 +80,6 @@ function parcelle_insert($surface,$id_variete_the) {
         return $crud->lister();
     }
 
-//    var_dump(parcelle_variete_getAll());
+//    var_dump(parcelle_getByid(1));
 //    parcelle_insert(25,1);
 ?>
