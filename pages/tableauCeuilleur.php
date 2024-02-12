@@ -34,7 +34,7 @@
                         <td><?php echo $ceuilleur['genre']?></td>
                         <td><?php echo $ceuilleur['date_naissance'] ?></td>
                         <td><a href="../template/backModel.php?page=../pages/insertCeuilleur.php&action=update&idCeuilleur=<?php echo $ceuilleur['id']?>"><button type="button" class="btn rounded-pill btn-outline-info">Modifier</button></a></td>
-                        <td><a href="&idCeuilleur=<?php echo $ceuilleur['id']?>"><button type="button" class="btn rounded-pill btn-outline-danger">Supprimer</button></a></td>
+                        <td><a href="../controllers/ceuilleurControl.php?action=delete&idCeuilleur=<?php echo $ceuilleur['id']?>"><button type="button" class="btn rounded-pill btn-outline-danger">Supprimer</button></a></td>
 
                     </tr>
                     <?php } ?>
