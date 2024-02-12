@@ -1,8 +1,13 @@
 <?php
     require_once('Crud.php');
+    require_once ("../config.php");
     function connect(){
         try {
-            return new PDO('mysql:host=localhost;dbname=salaire;charset=utf8','root','root');
+            global  $db_url,
+                    $db_user,
+                    $db_password
+            ;
+            return new PDO($db_url ,$db_user, $db_password);
 
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage();
