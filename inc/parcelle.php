@@ -7,9 +7,14 @@
     }
 
     function parcelle_supprimer($id) {
-        $requete = connect()->prepare("DELETE FROM the_parcelle WHERE numero = :id");
-        $requete->bindValue(':id', $id);
-        $requete->execute();
+        try {
+            $requete = connect()->prepare("DELETE FROM the_parcelle WHERE numero = :id");
+            $requete->bindValue(':id', $id);
+            $requete->execute();
+            return true;
+        }catch (Exception $exception){
+            $exception->getMessage();
+        }
     }
 
 function parcelle_insert($surface,$id_variete_the) {
