@@ -30,6 +30,7 @@
                                         <input type="date" aria-label="Max" class="form-control" placeholder="Max...">
                                         <input type="date" aria-label="Min" class="form-control" placeholder="Min...">
                                     </div>
+                                    <br>
                                     <input type="submit" class="btn btn-primary" value="Afficher">
                                 </form>
 
