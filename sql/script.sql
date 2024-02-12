@@ -189,7 +189,11 @@ INSERT INTO the_categorie_depense (nom) VALUES
     ('Energie'),
     ('Amortissements'),
     ('Formation'),
-    ('Autres');
+    ('Autres'),
+    ('Publicité'),
+    ('Frais juridiques'),
+    ('Recherche et Développement'),
+    ('Marketing');
 
 -- Depense
 INSERT INTO the_depense (date, id_categorie, montant) VALUES
