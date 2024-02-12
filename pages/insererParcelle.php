@@ -35,7 +35,7 @@
                                     <label class="col-sm-3 col-form-label" for="basic-icon-default-email">Surface en HA</label>
                                     <div class="col-sm-9">
                                         <div class="input-group input-group-merge">
-                                            <input type="number" id="basic-icon-default-email" class="form-control" aria-describedby="basic-icon-default-email2" name="surface"
+                                            <input type="text" id="basic-icon-default-email" class="form-control" aria-describedby="basic-icon-default-email2" name="surface"
                                             value="<?php echo $is_update ? $parcelle['surface'] : ""?>"
                                             >
                                             <span id="basic-icon-default-email2" class="input-group-text">HA</span>

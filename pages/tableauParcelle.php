@@ -2,6 +2,10 @@
     include_once "../inc/function.php";
     $parcelles = parcelle_getAll();
 
+    if(isset($_GET['msg'])){
+        alert($_GET['msg']);
+    }
+
 ?>
 
 
@@ -32,7 +36,7 @@
                             <td><?php echo $parcelle['surface']?></td>
                             <td><?php echo $parcelle['id_variete_the']?></td>
                             <td><a href="../template/backModel.php?page=../pages/insererParcelle.php&action=update&idParcelle=<?php echo $parcelle['numero'] ?>"><button type="button" class="btn rounded-pill btn-outline-info">Modifier</button></a></td>
-                            <td><a href=""><button type="button" class="btn rounded-pill btn-outline-danger">Supprimer</button></a></td>
+                            <td><a href="../controllers/parcelleControl.php?action=delete&idParcelle=<?php echo $parcelle['numero'] ?>"><button type="button" class="btn rounded-pill btn-outline-danger">Supprimer</button></a></td>
 
                         </tr>
                     <?php } ?>

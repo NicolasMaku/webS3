@@ -1,3 +1,12 @@
+<?php
+    include_once "../inc/function.php";
+    $ceuilleurs = ceuilleur_getAll();
+
+    if(isset($_GET['msg'])){
+        alert($_GET['msg']);
+    }
+?>
+
 <!-- Content wrapper -->
 <div class="content-wrapper">
     <!-- Content -->
@@ -19,14 +28,16 @@
                     </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
+                    <?php foreach($ceuilleurs as $ceuilleur) { ?>
                     <tr>
-                        <td>sechepinn</td>
-                        <td>Homme ve ?</td>
-                        <td>30-02-2024</td>
-                        <td><a href=""><button type="button" class="btn rounded-pill btn-outline-info">Modifier</button></a></td>
-                        <td><a href=""><button type="button" class="btn rounded-pill btn-outline-danger">Supprimer</button></a></td>
+                        <td><?php echo $ceuilleur['nom']?></td>
+                        <td><?php echo $ceuilleur['genre']?></td>
+                        <td><?php echo $ceuilleur['date_naissance'] ?></td>
+                        <td><a href="../template/backModel.php?page=../pages/insertCeuilleur.php&action=update&idCeuilleur=<?php echo $ceuilleur['id']?>"><button type="button" class="btn rounded-pill btn-outline-info">Modifier</button></a></td>
+                        <td><a href="../controllers/ceuilleurControl.php?action=delete&idCeuilleur=<?php echo $ceuilleur['id']?>"><button type="button" class="btn rounded-pill btn-outline-danger">Supprimer</button></a></td>
 
                     </tr>
+                    <?php } ?>
                     </tbody>
                 </table>
             </div>

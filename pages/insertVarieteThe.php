@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="card mb-4">
-                    <h5 class="card-header">Insere une variete de the</h5>
+                    <h5 class="card-header"><?php echo $is_update ? "Modifier" : "Ajouter" ?> une variete de the</h5>
                     <div class="card-body">
                         <form action="../controllers/varieteTheControl.php" method="POST" id="<?php echo $is_update ? "" : "variete-form"?>">
                             <input type="hidden" name="action" value="<?php echo $is_update ? "update" : "save"?>">

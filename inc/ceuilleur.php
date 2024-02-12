@@ -43,8 +43,14 @@
     }
 
     function ceuilleur_delete($id) {
-        $crud = new Crud('the_ceuilleur',connect());
-        $crud->delete($id);
+        try {
+            $crud = new Crud('the_ceuilleur', connect());
+            $crud->delete($id);
+            return true;
+
+        }catch (Exception $exception){
+            return $exception->getMessage();
+        }
     }
 
     function ceuilleur_getByid($id) {
