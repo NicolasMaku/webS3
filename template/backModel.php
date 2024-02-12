@@ -79,7 +79,7 @@ if (isset($_GET['page'])) {
                 <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
                 <!-- Cards -->
                 <li class="menu-item">
-                    <a href="frontModel.php?page=cards.php" class="menu-link">
+                    <a href="backModel.php?page=cards.php" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-collection"></i>
                         <div data-i18n="Basic">Cards</div>
                     </a>
@@ -92,17 +92,17 @@ if (isset($_GET['page'])) {
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="frontModel.php?page=../pages/account.php" class="menu-link">
+                            <a href="backModel.php?page=../pages/account.php" class="menu-link">
                                 <div data-i18n="Account">Account</div>
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="frontModel.php?page=../pages/notification.php" class="menu-link">
+                            <a href="backModel.php?page=../pages/notification.php" class="menu-link">
                                 <div data-i18n="Notifications">Notifications</div>
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="frontModel.php?page=../pages/connection.php" class="menu-link">
+                            <a href="backModel.php?page=../pages/connection.php" class="menu-link">
                                 <div data-i18n="Connections">Connections</div>
                             </a>
                         </li>
@@ -119,12 +119,12 @@ if (isset($_GET['page'])) {
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item active">
-                            <a href="frontModel.php?page=../pages/form.php" class="menu-link">
+                            <a href="backModel.php?page=../pages/form.php" class="menu-link">
                                 <div data-i18n="Basic Inputs">Basic Inputs</div>
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="frontModel.php?page=../pages/inputgroupes.php" class="menu-link">
+                            <a href="backModel.php?page=../pages/inputgroupes.php" class="menu-link">
                                 <div data-i18n="Input groups">Input groups</div>
                             </a>
                         </li>
@@ -134,7 +134,7 @@ if (isset($_GET['page'])) {
 
                 <!-- Tables -->
                 <li class="menu-item">
-                    <a href="frontModel.php?page=../pages/tables.php" class="menu-link">
+                    <a href="backModel.php?page=../pages/tables.php" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-table"></i>
                         <div data-i18n="Tables">Tables</div>
                     </a>
@@ -216,6 +216,13 @@ if (isset($_GET['page'])) {
                             </a>
                         </li>
                     </ul>
+                </li>
+
+                <li class="menu-item">
+                    <a href="backModel.php?page=../pages/configMontantSalaire.php" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-table"></i>
+                        <div data-i18n="Tables">Configurer le Salaire</div>
+                    </a>
                 </li>
 
 
