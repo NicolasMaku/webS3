@@ -24,7 +24,7 @@ switch ($action){
                 header("location:../template/backModel.php?page=../pages/tableauParcelle.php");
 
             } else {
-                header("location:../template/backModel.php?page=../pages/insererParcelle.php&action=update&idParcelle=".$_POST['idParccelle']."&error=".$return);
+                header("location:../template/backModel.php?page=../pages/insererParcelle.php&action=update&idParcelle=".$_POST['idParcelle']."&error=".$return);
             }
             exit();
 }
