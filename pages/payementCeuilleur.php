@@ -76,7 +76,7 @@ if(isset($_GET['msg'])){
                     if(xhr.status === 200){
                         let dataSorted = JSON.parse(xhr.responseText);
 
-                        
+
 
                     }
                 }
