@@ -11,8 +11,10 @@ function inserer_ceuillette($date,$id_ceuilleur,$id_parcelle,$poids_ceuilli) {
     ];
 
     try {
-        $crud = new Crud('the_ceuillette', connect());
-        $crud->insert($ceuilleutte);
+        if (valide($poids_ceuilli,$date,$id_parcelle)) {
+            $crud = new Crud('the_ceuillette', connect());
+            $crud->insert($ceuilleutte);
+        }
 
         return "Cueillette bien inseré";
 
