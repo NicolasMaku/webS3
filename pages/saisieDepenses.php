@@ -52,6 +52,30 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="card">
+                <h5 class="card-header">Depenses </h5>
+                <div class="table-responsive text-nowrap">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Categorie</th>
+                            <th>Montant</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                            <tr>
+                                <td>20-02-2024</td>
+                                <td>Chips beee</td>
+                                <td>50000 AR</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

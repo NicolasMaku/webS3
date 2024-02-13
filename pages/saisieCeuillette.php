@@ -67,6 +67,32 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="card">
+                <h5 class="card-header">Depenses </h5>
+                <div class="table-responsive text-nowrap">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Ceuilleur</th>
+                            <th>Parcelle</th>
+                            <th>Poids ceuilli</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                        <tr>
+                            <td>20-02-2024</td>
+                            <td>sescheepinn</td>
+                            <td>parcelle1</td>
+                            <td>200 kg</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
