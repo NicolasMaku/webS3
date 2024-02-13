@@ -25,7 +25,7 @@ function check_back_office($session) {
     }
 
     if($session['is_admin'] === false){
-        header("location:../template/frontMbhyyuodel.php?page=card.php");
+        header("location:../template/frontModel.php?page=../pages/card.php");
     }
 }
 
@@ -36,6 +36,6 @@ function check_front_office($session) {
     }
 
     if($session['is_admin'] === true){
-        header("location:../template/backModel.php?page=cardback.php");
+        header("location:../template/backModel.php?page=../pages/cardback.php");
     }
 }
