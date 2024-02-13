@@ -36,6 +36,6 @@ function check_front_office($session) {
     }
 
     if($session['is_admin'] === true){
-        header("location:../template/backModel.php?page=card.php");
+        header("location:../template/backModel.php?page=cardback.php");
     }
 }

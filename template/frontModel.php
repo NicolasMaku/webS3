@@ -85,7 +85,7 @@ if (isset($_GET['page'])) {
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
         <!-- Cards -->
         <li class="menu-item">
-          <a href="frontModel.php?page=cards.php" class="menu-link">
+          <a href="frontModel.php?page=../pages/cards.php" class="menu-link">
             <i class="menu-icon tf-icons bx bx-collection"></i>
             <div data-i18n="Basic">Cards</div>
           </a>
