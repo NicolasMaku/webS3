@@ -27,5 +27,10 @@ function valide($poids_ceuilli) {
     return false;
 }
 
+function ceuillette_getAll() {
+    $crud = new Crud('the_ceuillette_fullInfo',connect());
+    return $crud->lister();
+}
+
 //    inserer_ceuillette('2023-12-12',1,1,10);
 ?>
