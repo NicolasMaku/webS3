@@ -1,3 +1,8 @@
+<?php
+    include_once "../inc/function.php";
+    $liste_mois = 
+?>
+
 <div class="content-wrapper">
     <!-- Content -->
 
