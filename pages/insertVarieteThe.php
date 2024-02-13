@@ -60,6 +60,16 @@
                                     </div>
                                 </div>
 
+                                <div class="mb-3 row">
+                                    <label for="html5-text-input" class="col-md-3 col-form-label">Prix de Vente</label>
+                                    <div class="col-md-9">
+                                        <input type="number" id="html5-text-input" class="form-control" name="occupation"
+                                               value=""
+                                        >
+
+                                    </div>
+                                </div>
+
                                 <input type="submit" class="btn btn-primary" value="<?php echo $is_update ? "Modifier" : "Ajouter"?>" style="background-color: green">
 
                             </div>

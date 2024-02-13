@@ -10,20 +10,25 @@ CREATE TABLE the_variete(
     id SMALLINT auto_increment primary key,
     nom VARCHAR(50),
     occupation DOUBLE(16,2),
-    rendement_par_pied DOUBLE(16,2)
+    rendement_par_pied DOUBLE(16,2),
+    prix_vente DOUBLE(16,2)
 );
 
 CREATE TABLE the_ceuilleur(
       id SMALLINT auto_increment primary key,
       nom VARCHAR(50),
       genre VARCHAR(20),
-      date_naissance date
+      date_naissance date,
+      poids_minimum DOUBLE(16,2),
+      bonus SMALLINT,
+      malus SMALLINT
 );
 
 CREATE TABLE the_parcelle(
     numero SMALLINT auto_increment primary key,
     surface DOUBLE(16,2),
     id_variete_the SMALLINT,
+    poids_initiale DOUBLE(16,2),
     FOREIGN KEY (id_variete_the) REFERENCES the_variete(id)
 );
 
@@ -57,13 +62,19 @@ CREATE TABLE the_salaire(
 );
 
 CREATE TABLE the_mois_regenerer(
-    id smallint auto_increment primary key,
+    id smallint primary key,
     mois VARCHAR(20),
-    regenerer SMALLINT default 0
+    regenerer SMALLINT default 1
 );
 
 CREATE OR REPLACE VIEW the_parcelle_variete as
 SELECT p.*,v.nom from the_parcelle p join the_variete v on p.id_variete_the=v.id;
+
+CREATE OR REPLACE VIEW the_parcelle_variete_all as
+SELECT p.*,v.* from the_parcelle p join the_variete v on p.id_variete_the=v.id;
+
+CREATE OR REPLACE VIEW the_poids_initiale as
+select the_parcelle_variete_all.*,((10000*surface)/occupation)*rendement_par_pied as initiale from the_parcelle_variete_all;
 
 CREATE OR REPLACE VIEW the_ceuillette_fullInfo as
 select * from (SELECT c.*,cr.nom from the_ceuillette c join the_ceuilleur cr on c.id_ceuilleur=cr.id) as wname join the_parcelle on wname.id_parcelle=the_parcelle.numero;
@@ -118,51 +129,51 @@ INSERT INTO the_ceuilleur (nom, genre, date_naissance) VALUES
    ('Thomas Faure', 'Homme', '1999-06-18'),
    ('Mathilde Rousseau', 'Femme', '1980-10-11');
 
--- Variétés de thé
-INSERT INTO the_variete (nom, occupation, rendement_par_pied) VALUES
-    ('Assam', 10.5, 25.8),
-    ('Darjeeling', 8.7, 20.3),
-    ('Earl Grey', 12.2, 30.5),
-    ('Matcha', 9.8, 22.1),
-    ('Oolong', 11.5, 28.6),
-    ('Chai', 7.3, 18.9),
-    ('Jasmine', 13.6, 33.2),
-    ('Sencha', 10.2, 26.4),
-    ('Pu-erh', 8.9, 21.7),
-    ('White Peony', 12.8, 31.8),
-    ('Dragon Well', 9.5, 23.6),
-    ('Ceylon', 11.1, 27.3),
-    ('Rooibos', 8.3, 20.9),
-    ('Yerba Mate', 10.9, 29.1),
-    ('Hojicha', 7.8, 19.4),
-    ('Green Rooibos', 13.2, 32.7),
-    ('Lapsang Souchong', 9.1, 24.8),
-    ('Genmaicha', 11.7, 28.2),
-    ('Chamomile', 8.5, 21.2),
-    ('Hibiscus', 12.5, 30.1);
+-- Varietes de the
+INSERT INTO the_variete (nom, occupation, rendement_par_pied,prix_vente) VALUES
+    ('Assam', 10.5, 25.8,500),
+    ('Darjeeling', 8.7, 20.3,600),
+    ('Earl Grey', 12.2, 30.5,700),
+    ('Matcha', 9.8, 22.1,800),
+    ('Oolong', 11.5, 28.6,900),
+    ('Chai', 7.3, 18.9,1000),
+    ('Jasmine', 13.6, 33.2,200),
+    ('Sencha', 10.2, 26.4,300),
+    ('Pu-erh', 8.9, 21.7,400),
+    ('White Peony', 12.8, 31.8,500),
+    ('Dragon Well', 9.5, 23.6,350),
+    ('Ceylon', 11.1, 27.3,400),
+    ('Rooibos', 8.3, 20.9,500),
+    ('Yerba Mate', 10.9, 29.1,250),
+    ('Hojicha', 7.8, 19.4,400),
+    ('Green Rooibos', 13.2, 32.7,300),
+    ('Lapsang Souchong', 9.1, 24.8,400),
+    ('Genmaicha', 11.7, 28.2,500),
+    ('Chamomile', 8.5, 21.2,600),
+    ('Hibiscus', 12.5, 30.1,550);
 
 -- Parcelles
-INSERT INTO the_parcelle (surface, id_variete_the) VALUES
-   (15.5, 1),
-   (20.2, 3),
-   (18.7, 2),
-   (22.1, 4),
-   (17.3, 6),
-   (25.8, 5),
-   (19.4, 8),
-   (21.7, 7),
-   (16.9, 10),
-   (23.6, 9),
-   (20.5, 11),
-   (24.3, 13),
-   (18.2, 12),
-   (22.8, 15),
-   (17.1, 14),
-   (26.4, 17),
-   (19.8, 16),
-   (21.2, 19),
-   (24.9, 18),
-   (16.5, 20);
+INSERT INTO the_parcelle (surface, id_variete_the,poids_initiale) VALUES
+   (15.5, 1,50),
+   (20.2, 3,90),
+   (18.7, 2,30),
+   (22.1, 4,10),
+   (17.3, 6,23),
+   (25.8, 5,54),
+   (19.4, 8,12),
+   (21.7, 7,32),
+   (16.9, 10,43),
+   (23.6, 9,65),
+   (20.5, 11,23),
+   (24.3, 13,12),
+   (18.2, 12,43),
+   (22.8, 15,34),
+   (17.1, 14,54),
+   (26.4, 17,45),
+   (19.8, 16,34),
+   (21.2, 19,67),
+   (24.9, 18,45),
+   (16.5, 20,12);
 
 -- Ceuillette
 INSERT INTO the_ceuillette (date, id_ceuilleur, id_parcelle, poids_ceuilli) VALUES
@@ -193,21 +204,21 @@ INSERT INTO the_categorie_depense (nom) VALUES
     ('Engrais'),
     ('Pesticides'),
     ('Irrigation'),
-    ('Entretien du matériel'),
-    ('Frais de récolte'),
+    ('Entretien du materiel'),
+    ('Frais de recolte'),
     ('Frais de transport'),
     ('Salaires'),
     ('Charges sociales'),
     ('Assurances'),
     ('Frais administratifs'),
-    ('Location de matériel'),
+    ('Location de materiel'),
     ('Energie'),
     ('Amortissements'),
     ('Formation'),
     ('Autres'),
-    ('Publicité'),
+    ('Publicite'),
     ('Frais juridiques'),
-    ('Recherche et Développement'),
+    ('Recherche et Developpement'),
     ('Marketing');
 
 -- Depense
@@ -255,3 +266,17 @@ INSERT INTO the_salaire (id_ceuilleur, montant) VALUES
     (16, 1950.6),
     (18, 1250.5),
     (20, 1500.2);
+
+INSERT INTO the_mois_regenerer(id, regenerer) VALUES
+  (1,0),
+  (2,0),
+  (3,0),
+  (4,0),
+  (5,0),
+  (6,0),
+  (7,0),
+  (8,0),
+  (9,0),
+  (10,1),
+  (11,0),
+  (12,0);
