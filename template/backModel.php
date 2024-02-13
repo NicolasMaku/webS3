@@ -1,5 +1,12 @@
 <?php
 $page="cards.php";
+
+
+
+//if(!$_SESSION['is_admin']){
+//    header("location:");
+//}
+
 if (isset($_GET['page'])) {
     $page=$_GET['page'];
 }
@@ -56,7 +63,7 @@ if (isset($_GET['page'])) {
             <div class="app-brand demo" >
                 <a href="index.html" class="app-brand-link">
               <span class="app-brand-logo demo">
-                      <img src='../assets/img/favicon/Green_Leaves_-remov.png' alt="" width="75px" height="90px">
+                      <img src='../assets/img/favicon/Green_Leaves_-remov.png' alt="" width="40px">
               </span>
                     <span class="app-brand-text demo menu-text fw-bold">CollecTea</span>
                 </a>
@@ -70,10 +77,17 @@ if (isset($_GET['page'])) {
 
             <ul class="menu-inner py-1 ps">
 
-                <li class="menu-item" style=";text-align: center!important;">
+<!--                <li class="menu-item" style=";text-align: center!important;">-->
+<!---->
+<!--                    <div data-i18n="Basic" style="font-size: 20px;color: #690000;margin-top: 10px"> <i class=' menu-icon bx bx-street-view'></i> <b>Admin</b></div>-->
+<!---->
+<!--                </li>-->
 
-                    <div data-i18n="Basic" style="font-size: 20px;color: #690000;margin-top: 10px"> <i class=' menu-icon bx bx-street-view'></i> <b>Admin</b></div>
-
+                <li class="menu-item">
+                    <div class="menu-link" style="font-size: 20px;color: #690000;margin-top: 10px">
+                        <i class=" menu-icon bx bx-street-view"></i>
+                        <div data-i18n="Basic"><b>Admin</b></div>
+                    </div>
                 </li>
 
                 <!-- Components -->

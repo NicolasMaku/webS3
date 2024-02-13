@@ -5,6 +5,6 @@ $action = get_action($_GET, $_POST);
 
 switch ($action) {
     case "save":
-        depense_insert($_POST['date'], $_POST['idCateg'], $_POST['montant']);
+        echo depense_insert($_POST['date'], $_POST['idCateg'], $_POST['montant']);
         break;
 }

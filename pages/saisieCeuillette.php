@@ -2,6 +2,7 @@
     include_once "../inc/function.php";
     $ceuilleurs = ceuilleur_getAll();
     $parcelles = parcelle_getAll();
+    $ceuillettes = ceuillette_getAll();
 ?>
 
 
@@ -11,7 +12,7 @@
 
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card mb-4">
                     <h5 class="card-header">Saisie de Ceuillette</h5>
                     <div class="card-body">
@@ -69,7 +70,8 @@
         </div>
 
         <div class="row">
-            <div class="card">
+            <div class="col-md-12">
+                <div class="card p-4">
                 <h5 class="card-header">Depenses </h5>
                 <div class="table-responsive text-nowrap">
                     <table class="table">
@@ -81,16 +83,19 @@
                             <th>Poids ceuilli</th>
                         </tr>
                         </thead>
-                        <tbody class="table-border-bottom-0">
-                        <tr>
-                            <td>20-02-2024</td>
-                            <td>sescheepinn</td>
-                            <td>parcelle1</td>
-                            <td>200 kg</td>
-                        </tr>
+                        <tbody class="table-border-bottom-0" id="the_table">
+                        <?php foreach ($ceuillettes as $ceuillette) {?>
+                            <tr>
+                                <td><?php echo $ceuillette['date'] ?></td>
+                                <td><?php echo $ceuillette['nom'] ?></td>
+                                <td>parcelle <?php echo $ceuillette['numero'] ?></td>
+                                <td><?php echo $ceuillette['poids_ceuilli'] ?> kg</td>
+                            </tr>
+                        <?php } ?>
                         </tbody>
                     </table>
                 </div>
+            </div>
             </div>
         </div>
     </div>
@@ -111,7 +116,30 @@
             xhr.addEventListener("readystatechange", () => {
                if(xhr.readyState == 4){
                    if(xhr.status == 200){
-                       alert(xhr.responseText);
+                       let newDonnees = JSON.parse(xhr.responseText);
+                       let tBody = document.getElementById("the_table");
+                       tBody.innerHTML = "";
+
+                       for (let i = 0; i < newDonnees.length ; i++) {
+                           let row = document.createElement("tr");
+
+                           let date = document.createElement("td");
+                           let ceuilleur = document.createElement("td");
+                           let parcelle = document.createElement("td");
+                           let poids_ceuilli = document.createElement("td");
+
+                           date.textContent = newDonnees[i]['date'];
+                           ceuilleur.textContent = newDonnees[i]['nom'];
+                           parcelle.textContent = newDonnees[i]['numero'];
+                           poids_ceuilli.textContent = newDonnees[i]['poids_ceuilli'] + " kg";
+
+                           row.appendChild(date);
+                           row.appendChild(ceuilleur);
+                           row.appendChild(parcelle);
+                           row.appendChild(poids_ceuilli);
+
+                           tBody.appendChild(row);
+                       }
                    }
                }
             });

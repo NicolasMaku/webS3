@@ -7,21 +7,17 @@
     }
 
     function parcelle_supprimer($id) {
-        try {
-            $requete = connect()->prepare("DELETE FROM the_parcelle WHERE numero = :id");
-            $requete->bindValue(':id', $id);
-            $requete->execute();
-            return true;
-        }catch (Exception $exception){
-            $exception->getMessage();
-        }
+        $requete = connect()->prepare("DELETE FROM the_parcelle WHERE numero = :id");
+        $requete->bindValue(':id', $id);
+        $requete->execute();
     }
 
-function parcelle_insert($surface,$id_variete_the) {
+function parcelle_insert($surface,$id_variete_the,$poidsInitiale) {
 
     $parcelle = [
         "surface" => $surface,
-        "id_variete_the" => $id_variete_the
+        "id_variete_the" => $id_variete_the,
+        "poids_initiale" => $poidsInitiale
     ];
 
     try {
@@ -35,11 +31,12 @@ function parcelle_insert($surface,$id_variete_the) {
     }
 }
 
-    function parcelle_modify($numero,$surface,$id_variete_the) {
+    function parcelle_modify($numero,$surface,$id_variete_the,$poidsInitiale) {
 
         $parcelle = [
             "surface" => $surface,
-            "id_variete_the" => $id_variete_the
+            "id_variete_the" => $id_variete_the,
+            "poids_initiale" => $poidsInitiale
         ];
 
         try {

@@ -1,6 +1,8 @@
 <?php
     include_once "../inc/function.php";
-    $categories = categorie_depense_getAll();
+    $categories = depense_info_getAll();
+
+//    var_dump($categories);
 ?>
 
 <!-- Content wrapper -->
@@ -54,25 +56,29 @@
         </div>
 
         <div class="row">
-            <div class="card">
-                <h5 class="card-header">Depenses </h5>
-                <div class="table-responsive text-nowrap">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Categorie</th>
-                            <th>Montant</th>
-                        </tr>
-                        </thead>
-                        <tbody class="table-border-bottom-0">
+            <div class="col-md-12">
+                <div class="card-body card">
+                    <h5 class="card-header">Depenses </h5>
+                    <div class="table-responsive text-nowrap">
+                        <table class="table">
+                            <thead>
                             <tr>
-                                <td>20-02-2024</td>
-                                <td>Chips beee</td>
-                                <td>50000 AR</td>
+                                <th>Date</th>
+                                <th>Categorie</th>
+                                <th>Montant</th>
                             </tr>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                                <?php foreach($categories as $category) { ?>
+                                <tr>
+                                    <td><?php echo $category['date'] ?></td>
+                                    <td><?php echo $category['nom'] ?></td>
+                                    <td><?php echo $category['montant']?></td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
