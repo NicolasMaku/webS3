@@ -17,18 +17,19 @@
                                 <p class="mb-4">
                                     Voir tout les resultat Global de l'entreprise
                                 </p>
-                                <form action="">
+                                <form action="" id="form_unique" method="post">
                                     <div class="input-group">
-                                        <input type="date" class="form-control" placeholder="Choisisser La date de Resultat" aria-describedby="button-addon2">
+                                        <input type="date" class="form-control" name="date" placeholder="Choisisser La date de Resultat" aria-describedby="button-addon2">
                                         <input class="btn btn-outline-primary" type="submit" id="button-addon2" value="Afficher">
                                     </div>
                                 </form>
 
-                                <form action="">
+                                <form action="" id="form_between" method="post">
                                     <div class="input-group">
-                                        <span class="input-group-text">Date Max and Min</span>
-                                        <input type="date" aria-label="Max" class="form-control" placeholder="Max...">
-                                        <input type="date" aria-label="Min" class="form-control" placeholder="Min...">
+                                        <span class="input-group-text">Date Min and Max</span>
+                                        <input type="date" aria-label="Max" name="dateMin" class="form-control" id="input_date_min" placeholder="Min...">
+                                        <input type="date" aria-label="Min" name="dateMax" class="form-control" id="input_date_max" placeholder="Max...">
+                                        <input type="hidden" name="type" value="between">
                                     </div>
                                     <br>
                                     <input type="submit" class="btn btn-primary" value="Afficher">
@@ -58,7 +59,7 @@
                                         </div>
                                         <div class="mt-sm-auto">
 
-                                            <h3 class="mb-0"><?php echo $pds_total_ceuillette?></h3>
+                                            <h3 class="mb-0" id="total_ceuillette"><?php echo $pds_total_ceuillette?></h3>
                                         </div>
                                     </div>
                                     <div id="profileReportChart" style="min-height: 80px;"><img src="../assets/img/illustrations/feuille-remove.png" height="140" alt="View Badge User"></div>
@@ -80,7 +81,7 @@
 
                                         </div>
                                         <div class="mt-sm-auto">
-                                            <h3 class="mb-0"><?php echo $pds_restant_parcelle?></h3>
+                                            <h3 class="mb-0" id="restant_parcelle"><?php echo $pds_restant_parcelle?></h3>
                                         </div>
                                     </div>
                                     <div id="profileReportChart" style="min-height: 80px;"><img src="../assets/img/illustrations/terrain-remov.png" height="140" alt="View Badge User"></div>
@@ -111,7 +112,7 @@
                                             <h6 class="mb-0">Prix de Revient par kg</h6>
                                         </div>
                                         <div class="user-progress d-flex align-items-center gap-1">
-                                            <h6 class="mb-0"><?php echo $prix_revient ?></h6>
+                                            <h6 class="mb-0" id="prix_revient"><?php echo $prix_revient ?></h6>
                                             <span class="text-muted">AR</span>
                                         </div>
                                     </div>
@@ -124,3 +125,64 @@
 
     </div>
 </div>
+<script>
+    let dateMax = document.getElementById("input_date_max").value;
+    let dateMin = document.getElementById("input_date_max").value;
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+        let form_unique = document.getElementById("form_unique");
+
+        form_unique.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            let formData = new FormData(form_unique);
+            const xhr = new XMLHttpRequest();
+
+            xhr.addEventListener("readystatechange", () => {
+                if(xhr.readyState == 4){
+                    if(xhr.status == 200){
+                        let reponse = JSON.parse(xhr.responseText);
+                        let total_ceuillette  = document.getElementById("total_ceuillette");
+                        let restant_parcelle  = document.getElementById("restant_parcelle");
+                        let prix_revient = document.getElementById("prix_revient");
+
+                        total_ceuillette.textContent = reponse['poidsTotal'];
+                        restant_parcelle.textContent = reponse['poidsRestantParcelle'];
+                        prix_revient.textContent = reponse['prixDeRevientKg'];
+                    }
+                }
+            });
+
+            xhr.open("POST", "../controllers/resultatControl.php", true);
+            xhr.send(formData);
+        });
+
+        let form_between = document.getElementById("form_between");
+
+        form_between.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            let formData = new FormData(form_between);
+            const xhr = new XMLHttpRequest();
+
+            xhr.addEventListener("readystatechange", () => {
+                if(xhr.readyState == 4){
+                    if(xhr.status == 200){
+                        let reponse = JSON.parse(xhr.responseText);
+                        let total_ceuillette  = document.getElementById("total_ceuillette");
+                        let restant_parcelle  = document.getElementById("restant_parcelle");
+                        let prix_revient = document.getElementById("prix_revient");
+
+                        total_ceuillette.textContent = reponse['poidsTotal'];
+                        restant_parcelle.textContent = reponse['poidsRestantParcelle'];
+                        prix_revient.textContent = reponse['prixDeRevientKg'];
+                    }
+                }
+            });
+
+            xhr.open("POST", "../controllers/resultatControl.php", true);
+            xhr.send(formData);
+        });
+    })
+</script>

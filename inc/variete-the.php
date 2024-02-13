@@ -1,11 +1,12 @@
 <?php
     include_once "Crud.php";
     include_once "base.php";
-    function the_insertion($nomVariete,$occupation,$rendementParPied) {
+    function the_insertion($nomVariete,$occupation,$rendementParPied,$prixVente) {
         $the = [
             "nom" => $nomVariete,
             "occupation" => $occupation,
-            "rendement_par_pied" => $rendementParPied
+            "rendement_par_pied" => $rendementParPied,
+            "prix_vente" => $prixVente
         ];
 
         try {
@@ -20,18 +21,19 @@
         }
     }
 
-    function the_modify($id,$nomVariete,$occupation,$rendementParPied) {
+    function the_modify($id,$nomVariete,$occupation,$rendementParPied,$prixVente) {
         $the = [
             "nom" => $nomVariete,
             "occupation" => $occupation,
-            "rendement_par_pied" => $rendementParPied
+            "rendement_par_pied" => $rendementParPied,
+            "prix_vente" => $prixVente
         ];
 
         try {
             $crud = new Crud('the_variete',connect());
             $crud->update($id,$the);
 
-            return true;
+            return "variete bien modifié";
 
 
         }catch (Exception $exception){
