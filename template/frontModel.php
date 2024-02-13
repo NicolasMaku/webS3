@@ -135,6 +135,13 @@ if (isset($_GET['page'])) {
         </li>
 
         <li class="menu-item">
+          <a href="frontModel.php?page=../pages/prevision.php" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-collection"></i>
+            <div data-i18n="Basic">Prevision</div>
+          </a>
+        </li>
+
+        <li class="menu-item">
           <a href="../controllers/loginControl.php?action=logout" class="menu-link">
             <div data-i18n="Connections">Deconnection</div>
           </a>
