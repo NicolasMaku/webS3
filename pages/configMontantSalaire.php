@@ -12,7 +12,7 @@
                 <div class="card mb-4">
                     <h5 class="card-header">Configuerer le montant du salaire</h5>
                     <div class="card-body">
-                        <form method="POST" id="salaire-form">
+                        <form action="../controllers/salaireControl.php" method="POST" id="salaire-form">
                             <input type="hidden" name="action" value="salaire">
 
                             <div>
@@ -36,13 +36,13 @@
                                     <label class="col-sm-3 col-form-label" for="basic-icon-default-email">Salaire</label>
                                     <div class="col-sm-9">
                                         <div class="input-group input-group-merge">
-                                            <input type="number" id="salaire" class="form-control" aria-describedby="basic-icon-default-email2" name="">
+                                            <input type="text" id="salaire" class="form-control" aria-describedby="basic-icon-default-email2" name="montant">
                                             <span id="basic-icon-default-email2" class="input-group-text">AR</span>
                                         </div>
                                     </div>
                                 </div>
 
-                                <input type="submit" class="btn btn-primary" value="Ajouter" style="background-color: green">
+                                <input type="submit" class="btn btn-primary" value="Modifier" style="background-color: green">
 
                             </div>
                         </form>
