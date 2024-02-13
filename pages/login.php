@@ -22,8 +22,8 @@
 
             <form action="../controllers/loginControl.php" method="POST" class="form" id="formlog">
                 <input type="hidden" name="action" value="login">
-                <input type="email" class="form-field animation a3" placeholder="Email Address" name="email" value="utilisateur1@email.com" required>
-                <input type="password" class="form-field animation a4" placeholder="Password" name="password" value="motdepasse1" required>
+                <input type="email" class="form-field animation a3" placeholder="Email Address" name="email" value="jane@example.com" required>
+                <input type="password" class="form-field animation a4" placeholder="Password" name="password" value="securepass" required>
                 <p class="animation a5"> <a href="#" style="padding-right: 40%" id="sign-up-btn">Sign up</a> <a href="#">Forgot Password</a></p>
                 <input type="submit"  value="LOGIN" class="button animation a6">
             </form>

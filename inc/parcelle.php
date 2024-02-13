@@ -13,7 +13,7 @@
             $requete->execute();
             return true;
         }catch (Exception $exception){
-            $exception->getMessage();
+            return $exception->getMessage();
         }
     }
 
