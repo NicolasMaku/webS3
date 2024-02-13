@@ -19,7 +19,7 @@ CREATE TABLE the_ceuilleur(
       nom VARCHAR(50),
       genre VARCHAR(20),
       date_naissance date,
-      poids_minimum DOUBLE(16,2),
+      poids_minimal DOUBLE(16,2),
       bonus SMALLINT,
       malus SMALLINT
 );
