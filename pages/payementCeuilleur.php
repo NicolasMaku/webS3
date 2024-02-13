@@ -1,6 +1,6 @@
 <?php
 include_once "../inc/function.php";
-$ceuilleurs = ceuilleur_getAll();
+$ceuilleurs = getP;
 
 if(isset($_GET['msg'])){
     alert($_GET['msg']);
