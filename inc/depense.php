@@ -65,6 +65,10 @@
         }
     }
 
+    function depense_info_getAll() {
+        $crud = new Crud('the_depense_info',connect());
+        return $crud->lister();
+    }
 //    depense_delete(4);
 //    depense_insert("2022-03-12",2,500.0);
 
