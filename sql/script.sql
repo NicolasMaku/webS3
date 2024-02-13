@@ -67,6 +67,7 @@ CREATE TABLE the_mois_regenerer(
     regenerer SMALLINT default 1
 );
 
+--  VIEWS
 CREATE OR REPLACE VIEW the_parcelle_variete as
 SELECT p.*,v.nom from the_parcelle p join the_variete v on p.id_variete_the=v.id;
 
@@ -83,6 +84,21 @@ select * from (SELECT c.*,cr.nom from the_ceuillette c join the_ceuilleur cr on 
 
 CREATE OR REPLACE VIEW the_depense_info as
 SELECT d.*,cd.nom from the_depense d join the_categorie_depense cd on d.id_categorie=cd.id;
+
+CREATE OR REPLACE VIEW the_ceuillette_parcelle as
+select * from (SELECT tc.date, tc.id_ceuilleur, tc.id_parcelle, tc.poids_ceuilli,tp.* from the_ceuillette tc join the_parcelle tp on tc.id_parcelle=tp.numero) as cp join the_variete tv on cp.id_variete_the=tv.id;
+
+CREATE OR REPLACE VIEW all_info as
+select tcp.*,tc.nom,tc.date_naissance,tc.poids_minimal,tc.genre,tc.bonus,tc.malus from the_ceuillette_parcelle tcp join the_ceuilleur tc on tcp.id_ceuilleur=tc.id;
+
+select id_ceuilleur,
+       CASE
+           WHEN poids_ceuilli>poids_minimal THEN +(poids_ceuilli-poids_minimal)*
+           WHEN poids_ceuilli=poids_minimal THEN +(poids_ceuilli-poids_minimal)*
+           WHEN poids_ceuilli<poids_minimal THEN -(poids_ceuilli-poids_minimal)*
+       prix_vente,poids_ceuilli from the_ceuillette_parcelle;
+
+select * from
 
 -- Utilisateurs
 INSERT INTO the_user (username, email, password, admin) VALUES
@@ -179,6 +195,7 @@ INSERT INTO the_parcelle (surface, id_variete_the,poids_initiale) VALUES
 
 -- Ceuillette
 INSERT INTO the_ceuillette (date, id_ceuilleur, id_parcelle, poids_ceuilli) VALUES
+    ('2023-01-01', 1, 1, 12.3),
     ('2024-01-05', 1, 1, 12.3),
     ('2024-02-10', 3, 2, 15.8),
     ('2024-03-15', 5, 3, 10.7),
@@ -198,7 +215,27 @@ INSERT INTO the_ceuillette (date, id_ceuilleur, id_parcelle, poids_ceuilli) VALU
     ('2025-05-25', 14, 17, 20.2),
     ('2025-06-30', 16, 18, 26.9),
     ('2025-07-05', 18, 19, 22.4),
-    ('2025-08-10', 20, 20, 16.8);
+    ('2025-08-10', 20, 20, 16.8),
+    ('2025-09-15', 1, 1, 14.2),
+    ('2025-10-20', 3, 2, 17.5),
+    ('2025-11-25', 5, 3, 11.8),
+    ('2025-12-30', 7, 4, 19.3),
+    ('2026-01-05', 9, 5, 15.6),
+    ('2026-02-10', 11, 6, 22.4),
+    ('2026-03-15', 13, 7, 17.8),
+    ('2026-04-20', 15, 8, 20.9),
+    ('2026-05-25', 17, 9, 14.2),
+    ('2026-06-30', 19, 10, 21.6),
+    ('2026-07-05', 2, 11, 18.4),
+    ('2026-08-10', 4, 12, 23.6),
+    ('2026-09-15', 6, 13, 15.9),
+    ('2026-10-20', 8, 14, 24.1),
+    ('2026-11-25', 10, 15, 19.3),
+    ('2026-12-30', 12, 16, 26.6),
+    ('2027-01-05', 14, 17, 21.2),
+    ('2027-02-10', 16, 18, 27.9),
+    ('2027-03-15', 18, 19, 23.4),
+    ('2027-04-20', 20, 20, 17.8);
 
 -- categorie depense
 INSERT INTO the_categorie_depense (nom) VALUES
@@ -270,15 +307,15 @@ INSERT INTO the_salaire (id_ceuilleur, montant) VALUES
     (20, 1500.2);
 
 INSERT INTO the_mois_regenerer(id, nom,regenerer) VALUES
-  (1,'Janvier',0),
-  (2,'Fevrier',0),
-  (3,'Mars',0),
-  (4,'Avril',0),
-  (5,'Mai',0),
-  (6,'Juin',0),
-  (7,'Juillet',0),
-  (8,'Aout',0),
-  (9,'Septembre',0),
+  (1,'Janvier',1),
+  (2,'Fevrier',1),
+  (3,'Mars',1),
+  (4,'Avril',1),
+  (5,'Mai',1),
+  (6,'Juin',1),
+  (7,'Juillet',1),
+  (8,'Aout',1),
+  (9,'Septembre',1),
   (10,'Octobre',1),
-  (11,'Novembre',0),
-  (12,'Decembre',0);
+  (11,'Novembre',1),
+  (12,'Decembre',1);
