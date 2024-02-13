@@ -36,7 +36,7 @@
                         <td><?php echo $ceuilleur['nom']?></td>
                         <td><?php echo $ceuilleur['genre']?></td>
                         <td><?php echo $ceuilleur['date_naissance'] ?></td>
-                        <td><?php echo $ceuilleur['poids_minimum'] ?></td>
+                        <td><?php echo $ceuilleur['poids_minimal'] ?></td>
                         <td><?php echo $ceuilleur['bonus'] ?></td>
                         <td><?php echo $ceuilleur['malus'] ?></td>
                         <td><a href="../template/backModel.php?page=../pages/insertCeuilleur.php&action=update&idCeuilleur=<?php echo $ceuilleur['id']?>"><button type="button" class="btn rounded-pill btn-outline-info">Modifier</button></a></td>

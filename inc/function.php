@@ -11,5 +11,5 @@
     require_once "categorie-depense.php";
     require_once "variete-the.php";
     require_once "mois.php";
-
+    require_once "salaire.php";
 ?>

@@ -11,7 +11,7 @@
             "nom" => $nom,
             "genre" => $genre,
             "date_naissance" => $dateNaissance,
-            "poids_minimum" => $poidsMinimum,
+            "poids_minimal" => $poidsMinimum,
             "bonus" => $bonus,
             "malus" => $malus
         ];
@@ -32,7 +32,7 @@
             "nom" => $nom,
             "genre" => $genre,
             "date_naissance" => $dateNaissance,
-            "poids_minimum" => $poidsMinimum,
+            "poids_minimal" => $poidsMinimum,
             "bonus" => $bonus,
             "malus" => $malus
         ];

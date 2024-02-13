@@ -64,7 +64,7 @@
                                     <div class="col-sm-9">
                                         <div class="input-group input-group-merge">
                                             <input type="number" id="basic-icon-default-email" class="form-control" aria-describedby="basic-icon-default-email2" name="poidsMin"
-                                                   value="<?php echo $is_update ? $ceuilleur['poids_minimum'] : ""  ?>"
+                                                   value="<?php echo $is_update ? $ceuilleur['poids_minimal'] : ""  ?>"
                                             >
                                             <span id="basic-icon-default-email2" class="input-group-text">KG</span>
                                         </div>
