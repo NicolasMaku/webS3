@@ -96,7 +96,7 @@ if (isset($_GET['page'])) {
 
                 <!-- Cards -->
                 <li class="menu-item">
-                    <a href="backModel.php?page=cards.php" class="menu-link">
+                    <a href="backModel.php?page=../pages/cards.php" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-collection"></i>
                         <div data-i18n="Basic">Cards</div>
                     </a>
@@ -249,12 +249,7 @@ if (isset($_GET['page'])) {
                     </a>
                 </li>
 
-                <li class="menu-item">
-                    <a href="backModel.php?page=../pages/payementCeuilleur.php" class="menu-link">
-                        <i class="menu-icon tf-icons bx bx-table"></i>
-                        <div data-i18n="Tables">Vente de feuille</div>
-                    </a>
-                </li>
+
 
 
 
