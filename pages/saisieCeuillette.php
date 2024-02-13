@@ -23,14 +23,14 @@
                                 <div class="mb-3 row">
                                     <label for="html5-date-input" class="col-md-2 col-form-label">Date</label>
                                     <div class="col-md-10">
-                                        <input class="form-control" type="date" value="2021-06-18" id="html5-date-input" name="date">
+                                        <input class="form-control" type="date" value="2021-06-18" id="date-in" name="date">
                                     </div>
                                 </div>
 
                                 <div class="mb-3 row">
                                     <label for="html5-text-input" class="col-md-2 col-form-label">Ceuilleur</label>
                                     <div class="col-md-10">
-                                        <select id="html5-text-input" class="form-select" name="idCeuil">
+                                        <select id="ceuilleur-in" class="form-select" name="idCeuil">
                                             <?php foreach ($ceuilleurs as $ceuilleur) {?>
                                                 <option value="<?php echo $ceuilleur['id']?>"> <?php echo $ceuilleur['nom']?></option>
                                             <?php } ?>
@@ -42,7 +42,7 @@
                                 <div class="mb-3 row">
                                     <label for="html5-text-input" class="col-md-2 col-form-label">Parcelle</label>
                                     <div class="col-md-10">
-                                        <select id="html5-text-input" class="form-select" name="idParc">
+                                        <select id="parcelle-in" class="form-select" name="idParc" >
                                             <?php foreach ($parcelles as $parcelle) {?>
                                                 <option value="<?php echo $parcelle['numero'] ?>">Parcelle N°<?php echo $parcelle['numero'] ?></option>
                                             <?php } ?>
@@ -50,11 +50,13 @@
                                     </div>
                                 </div>
 
+                                <p style="color: red" id="poids-alert"></p>
+
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label" for="basic-icon-default-email">Poids ceuilli</label>
                                     <div class="col-sm-10">
                                         <div class="input-group input-group-merge">
-                                            <input type="number" id="basic-icon-default-email" class="form-control" aria-describedby="basic-icon-default-email2" name="poids">
+                                            <input type="number"  class="form-control" aria-describedby="basic-icon-default-email2" id="poids-in" name="poids" value="0">
                                             <span id="basic-icon-default-email2" class="input-group-text">KG</span>
                                         </div>
                                     </div>
@@ -104,6 +106,40 @@
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         let ceuilletteForm = document.getElementById("ceuillette-form");
+        let poidsIn = document.getElementById("poids-in");
+        let ceuilleurIn = document.getElementById("ceuilleur-in");
+        let parcelleIn = document.getElementById("parcelle-in");
+        let dateIn = document.getElementById("date-in");
+        let poidsAlert = document.getElementById("poids-alert");
+
+        parcelleIn.addEventListener("change", () => {
+           verify();
+        });
+
+        poidsIn.addEventListener("keyup", () => {
+            verify();
+        });
+
+        dateIn.addEventListener("change", () => {
+            verify();
+        })
+
+        function verify(){
+            const xhr = new XMLHttpRequest();
+
+            xhr.addEventListener("readystatechange", () => {
+                if(xhr.readyState === 4){
+                    if(xhr.status === 200) {
+                        poidsAlert.innerHTML = xhr.responseText;
+                        // console.log(xhr.responseText);
+                    }
+                }
+            })
+
+            xhr.open("POST", "../controllers/ceuilletteControl.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send("action=verify&poids=" + poidsIn.value + "&parcelle=" + ceuilleurIn.value + "&date=" + dateIn.value);
+        }
 
         ceuilletteForm.addEventListener("submit", (event) => {
             event.preventDefault();

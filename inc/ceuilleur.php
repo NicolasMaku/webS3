@@ -49,8 +49,13 @@
     }
 
     function ceuilleur_delete($id) {
-        $crud = new Crud('the_ceuilleur',connect());
-        $crud->delete($id);
+        try {
+            $crud = new Crud('the_ceuilleur', connect());
+            $crud->delete($id);
+            return true;
+        }catch (Exception $exception){
+            return $exception->getMessage();
+        }
     }
 
     function ceuilleur_getByid($id) {
@@ -65,7 +70,7 @@
 
     function ceuilleur_getPayement() {
         $sql = "select * from poids_minimal from the_ceuilleur";
-        $poids_minimal =
+//        $poids_minimal =
     }
 
 //    ceuilleur_insert("Kevin","Homme","2018-12-4");
