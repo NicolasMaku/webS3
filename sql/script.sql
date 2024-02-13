@@ -59,6 +59,9 @@ CREATE TABLE the_salaire(
 CREATE OR REPLACE VIEW the_parcelle_variete as
 SELECT p.*,v.nom from the_parcelle p join the_variete v on p.id_variete_the=v.id;
 
+CREATE OR REPLACE VIEW the_ceuillette_fullInfo as
+select * from (SELECT c.*,cr.nom from the_ceuillette c join the_ceuilleur cr on c.id_ceuilleur=cr.id) as wname join the_parcelle on wname.id_parcelle=the_parcelle.numero;
+
 -- Utilisateurs
 INSERT INTO the_user (username, email, password, admin) VALUES
     ('john_doe', 'john@example.com', 'password123', 1),
