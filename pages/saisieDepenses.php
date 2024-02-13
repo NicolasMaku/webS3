@@ -11,7 +11,7 @@
 
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card mb-4">
                     <h5 class="card-header">Saisie de Depenses</h5>
                     <div class="card-body">
@@ -68,7 +68,7 @@
                                 <th>Montant</th>
                             </tr>
                             </thead>
-                            <tbody class="table-border-bottom-0">
+                            <tbody class="table-border-bottom-0" id="the_table">
                                 <?php foreach($categories as $category) { ?>
                                 <tr>
                                     <td><?php echo $category['date'] ?></td>
@@ -85,6 +85,8 @@
     </div>
 </div>
 
+
+
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         let depenseForm = document.getElementById("depense-form");
@@ -100,7 +102,27 @@
             xhr.addEventListener("readystatechange", () => {
                 if(xhr.readyState == 4){
                     if(xhr.status == 200){
-                        alert(xhr.responseText);
+                        let newDonnees = JSON.parse(xhr.responseText);
+                        let tBody = document.getElementById("the_table");
+                        tBody.innerHTML = "";
+
+                        for (let i = 0; i < newDonnees.length ; i++) {
+                            let row = document.createElement("tr");
+
+                            let date = document.createElement("td");
+                            let categorie = document.createElement("td");
+                            let montant = document.createElement("td");
+
+                            date.textContent = newDonnees[i]['date'];
+                            categorie.textContent = newDonnees[i]['nom'];
+                            montant.textContent = newDonnees[i]['montant'];
+
+                            row.appendChild(date);
+                            row.appendChild(categorie);
+                            row.appendChild(montant);
+
+                            tBody.appendChild(row);
+                        }
                     }
                 }
             });
@@ -109,4 +131,25 @@
             xhr.send(formData);
         });
     })
+
+        // depenseForm.addEventListener("submit", (event) => {
+        //     event.preventDefault();
+        //
+        //     let formData = new FormData(depenseForm);
+        //     const xhr = new XMLHttpRequest();
+        //
+        //
+        //
+        //     xhr.addEventListener("readystatechange", () => {
+        //         if(xhr.readyState == 4){
+        //             if(xhr.status == 200){
+        //                 alert(xhr.responseText);
+        //             }
+        //         }
+        //     });
+        //
+        //     xhr.open("POST", "../controllers/depenseControl.php", true);
+        //     xhr.send(formData);
+        // });
+    // })
 </script>

@@ -59,7 +59,7 @@ if (isset($_GET['page'])) {
       <div class="app-brand demo">
         <a href="index.html" class="app-brand-link">
               <span class="app-brand-logo demo">
-                  <img src='../assets/img/favicon/Green_Leaves_-remov.png' alt="" width="75px" height="90px">
+                  <img src='../assets/img/favicon/Green_Leaves_-remov.png' alt="" width="40px">
               </span>
           <span class="app-brand-text demo menu-text fw-bold ms-2">Collectea</span>
         </a>
