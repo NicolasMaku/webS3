@@ -1,5 +1,9 @@
 <?php
 $page="cards.php";
+if(!$_SESSION['is_admin']){
+    header("location:");
+}
+
 if (isset($_GET['page'])) {
     $page=$_GET['page'];
 }
