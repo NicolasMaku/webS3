@@ -12,6 +12,11 @@
         }
     }
 
+    function mois_getAll() {
+        $crud = new Crud('the_mois_regenerer',connect());
+        return $crud->lister();
+    }
+
 //    $mois = [
 //        1 => 0,
 //        2 => 1,
