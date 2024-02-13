@@ -43,6 +43,9 @@ switch ($action){
             echo salaire_getByid($_POST['idCeuilleur'])['montant'];
             exit();
 
+    case "payement":
+            echo get
+
 
 }
 

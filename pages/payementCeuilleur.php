@@ -74,9 +74,36 @@ if(isset($_GET['msg'])){
             xhr.addEventListener("readystatechange", () => {
                 if(xhr.readyState === 4) {
                     if(xhr.status === 200){
-                        let dataSorted = JSON.parse(xhr.responseText);
+                        let newDonnees = JSON.parse(xhr.responseText);
+                        let tBody = document.getElementById("the_table");
+                        tBody.innerHTML = "";
 
+                        for (let i = 0; i < newDonnees.length ; i++) {
+                            let row = document.createElement("tr");
 
+                            let date = document.createElement("td");
+                            let ceuilleur = document.createElement("td");
+                            let poids = document.createElement("td");
+                            let bonus = document.createElement("td");
+                            let mallus = document.createElement("td");
+                            let montant = document.createElement("td");
+
+                            date.textContent = newDonnees[i]['date'];
+                            ceuilleur.textContent = newDonnees[i]['nom'];
+                            poids.textContent = newDonnees[i]['poids_minimal'];
+                            bonus.textContent = newDonnees[i]['bonus'];
+                            mallus.textContent = newDonnees[i]['malus'];
+                            montant.textContent = newDonnees[i]['montant'];
+
+                            row.appendChild(date);
+                            row.appendChild(ceuilleur);
+                            row.appendChild(poids);
+                            row.appendChild(bonus);
+                            row.appendChild(mallus)
+                            row.appendChild(montant);
+
+                            tBody.appendChild(row);
+                        }
 
                     }
                 }
