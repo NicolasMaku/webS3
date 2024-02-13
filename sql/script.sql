@@ -91,15 +91,6 @@ select * from (SELECT tc.date, tc.id_ceuilleur, tc.id_parcelle, tc.poids_ceuilli
 CREATE OR REPLACE VIEW all_info as
 select tcp.*,tc.nom,tc.date_naissance,tc.poids_minimal,tc.genre,tc.bonus,tc.malus from the_ceuillette_parcelle tcp join the_ceuilleur tc on tcp.id_ceuilleur=tc.id;
 
-select id_ceuilleur,
-       CASE
-           WHEN poids_ceuilli>poids_minimal THEN +(poids_ceuilli-poids_minimal)*
-           WHEN poids_ceuilli=poids_minimal THEN +(poids_ceuilli-poids_minimal)*
-           WHEN poids_ceuilli<poids_minimal THEN -(poids_ceuilli-poids_minimal)*
-       prix_vente,poids_ceuilli from the_ceuillette_parcelle;
-
-select * from
-
 -- Utilisateurs
 INSERT INTO the_user (username, email, password, admin) VALUES
     ('john_doe', 'john@example.com', 'password123', 1),
