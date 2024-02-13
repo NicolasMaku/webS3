@@ -39,12 +39,16 @@ switch ($action){
             }
             exit();
 
+
     case "salaire":
             echo salaire_getByid($_POST['idCeuilleur'])['montant'];
             exit();
 
+
     case "payement":
-            echo get
+//        echo "a";
+            echo getPayement_par_Ceuilleur($_POST['debut'], $_POST['fin']);
+//            var_dump(getPayement_par_Ceuilleur($_POST['debut'], $_POST['fin']));
 
 
 }
