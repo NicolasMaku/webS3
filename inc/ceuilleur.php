@@ -6,11 +6,14 @@
         return $crud->lister();
     }
 
-    function ceuilleur_insert($nom,$genre,$dateNaissance) {
+    function ceuilleur_insert($nom,$genre,$dateNaissance,$poidsMinimum,$bonus,$malus) {
         $ceuilleur = [
             "nom" => $nom,
             "genre" => $genre,
-            "date_naissance" => $dateNaissance
+            "date_naissance" => $dateNaissance,
+            "poids_minimum" => $poidsMinimum,
+            "bonus" => $bonus,
+            "malus" => $malus
         ];
 
         try {
@@ -24,11 +27,14 @@
         }
     }
 
-    function ceuilleur_modify($id,$nom,$genre,$dateNaissance) {
+    function ceuilleur_modify($id,$nom,$genre,$dateNaissance,$poidsMinimum,$bonus,$malus) {
         $ceuilleur = [
             "nom" => $nom,
             "genre" => $genre,
-            "date_naissance" => $dateNaissance
+            "date_naissance" => $dateNaissance,
+            "poids_minimum" => $poidsMinimum,
+            "bonus" => $bonus,
+            "malus" => $malus
         ];
 
         try {
@@ -43,14 +49,8 @@
     }
 
     function ceuilleur_delete($id) {
-        try {
-            $crud = new Crud('the_ceuilleur', connect());
-            $crud->delete($id);
-            return true;
-
-        }catch (Exception $exception){
-            return $exception->getMessage();
-        }
+        $crud = new Crud('the_ceuilleur',connect());
+        $crud->delete($id);
     }
 
     function ceuilleur_getByid($id) {
@@ -61,6 +61,11 @@
         }catch (Exception $exception){
             return $exception->getMessage();
         }
+    }
+
+    function ceuilleur_getPayement() {
+        $sql = "select * from poids_minimal from the_ceuilleur";
+        $poids_minimal =
     }
 
 //    ceuilleur_insert("Kevin","Homme","2018-12-4");

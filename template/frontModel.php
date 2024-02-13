@@ -143,6 +143,13 @@ if (isset($_GET['page'])) {
           </a>
         </li>
 
+        <li class="menu-item">
+          <a href="frontModel.php?page=../pages/payementCeuilleur.php" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-table"></i>
+            <div data-i18n="Tables">Vente de feuille</div>
+          </a>
+        </li>
+
         <--
 
 

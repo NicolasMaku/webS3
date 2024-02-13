@@ -23,8 +23,10 @@ function inserer_ceuillette($date,$id_ceuilleur,$id_parcelle,$poids_ceuilli) {
 }
 
 
-function valide($poids_ceuilli) {
-    return false;
+function valide($poids_ceuilli,$date,$id_parcelle) {
+    $initiale = getPoidsInitiale_mois($date,$id_parcelle);
+    if ($poids_ceuilli>getPoidsInitiale()) return false;
+    else return true;
 }
 
 function ceuillette_getAll() {
