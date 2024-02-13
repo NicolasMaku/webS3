@@ -63,10 +63,11 @@ CREATE TABLE the_salaire(
 
 CREATE TABLE the_mois_regenerer(
     id smallint primary key,
-    nom VARCHAR(20),
+    mois VARCHAR(20),
     regenerer SMALLINT default 1
 );
 
+--  VIEWS
 CREATE OR REPLACE VIEW the_parcelle_variete as
 SELECT p.*,v.nom from the_parcelle p join the_variete v on p.id_variete_the=v.id;
 
@@ -83,6 +84,11 @@ select * from (SELECT c.*,cr.nom from the_ceuillette c join the_ceuilleur cr on 
 
 CREATE OR REPLACE VIEW the_depense_info as
 SELECT d.*,cd.nom from the_depense d join the_categorie_depense cd on d.id_categorie=cd.id;
+
+CREATE OR REPLACE VIEW ceuillette_parcelle as
+select * from (SELECT * from the_ceuillette tc join the_parcelle tp on tc.id_parcelle=tp.numero) as cp join the_variete tv on cp.id_variete_the=tv.id;
+
+
 
 -- Utilisateurs
 INSERT INTO the_user (username, email, password, admin) VALUES
