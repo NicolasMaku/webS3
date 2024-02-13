@@ -33,7 +33,7 @@
             $crud = new Crud('the_variete',connect());
             $crud->update($id,$the);
 
-            return "variete bien modifié";
+            return true;
 
 
         }catch (Exception $exception){

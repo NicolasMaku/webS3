@@ -1,6 +1,9 @@
 <?php
+include_once "../inc/function.php";
+
 $page="cards.php";
-$codePage = "";
+session_start();
+check_front_office($_SESSION);
 
 if (isset($_GET['page'])) {
   $page=$_GET['page'];
@@ -76,7 +79,12 @@ if (isset($_GET['page'])) {
 
 
 
-
+        <li class="menu-item">
+          <a href="frontModel.php?page=../pages/url.php" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-collection"></i>
+            <div data-i18n="Basic">Liens SQL et Todo</div>
+          </a>
+        </li>
 
         <!-- Components -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
@@ -88,33 +96,9 @@ if (isset($_GET['page'])) {
           </a>
         </li>
 
-        <li class="menu-item">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-dock-top"></i>
-            <div data-i18n="Account Settings">Account Settings</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="frontModel.php?page=../pages/account.php" class="menu-link">
-                <div data-i18n="Account">Account</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="frontModel.php?page=../pages/notification.php" class="menu-link">
-                <div data-i18n="Notifications">Notifications</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="frontModel.php?page=../pages/connection.php" class="menu-link">
-                <div data-i18n="Connections">Connections</div>
-              </a>
-            </li>
-          </ul>
-        </li>
 
-        <!-- Forms & Tables -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp; Tables</span></li>
-        <!-- Forms -->
+
 
 
 
@@ -149,6 +133,20 @@ if (isset($_GET['page'])) {
             <div data-i18n="Tables">Vente de feuille</div>
           </a>
         </li>
+
+        <li class="menu-item">
+          <a href="frontModel.php?page=../pages/prevision.php" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-collection"></i>
+            <div data-i18n="Basic">Prevision</div>
+          </a>
+        </li>
+
+        <li class="menu-item">
+          <a href="../controllers/loginControl.php?action=logout" class="menu-link">
+            <div data-i18n="Connections">Deconnection</div>
+          </a>
+        </li>
+
 
         <--
 

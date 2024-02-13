@@ -15,7 +15,7 @@
 
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card mb-4">
                     <h5 class="card-header"><?php echo $is_update ? "Modifier" : "Ajouter" ?> une variete de the</h5>
                     <div class="card-body">
@@ -41,7 +41,7 @@
                                 <div class="mb-3 row">
                                     <label for="html5-text-input" class="col-md-3 col-form-label">Occupation</label>
                                     <div class="col-md-9">
-                                        <input type="number" id="html5-text-input" class="form-control" name="occupation"
+                                        <input type="text" id="html5-text-input" class="form-control" name="occupation"
                                         value="<?php echo $is_update ? $variete['occupation'] : ""?>"
                                         >
 
@@ -53,7 +53,7 @@
                                     <label class="col-sm-3 col-form-label" for="basic-icon-default-email">Rendement par pied</label>
                                     <div class="col-sm-9">
                                         <div class="input-group input-group-merge">
-                                            <input type="number" id="basic-icon-default-email" class="form-control" aria-describedby="basic-icon-default-email2" name="rendement"
+                                            <input type="text" id="basic-icon-default-email" class="form-control" aria-describedby="basic-icon-default-email2" name="rendement"
                                             value="<?php echo $is_update ? $variete['rendement_par_pied'] : ""  ?>" >
                                             <span id="basic-icon-default-email2" class="input-group-text">KG</span>
                                         </div>
@@ -63,8 +63,8 @@
                                 <div class="mb-3 row">
                                     <label for="html5-text-input" class="col-md-3 col-form-label">Prix de Vente</label>
                                     <div class="col-md-9">
-                                        <input type="number" id="html5-text-input" class="form-control" name="occupation"
-                                               value=""
+                                        <input type="text" id="html5-text-input" class="form-control" name="prixVente"
+                                               value="<?php echo $is_update ? $variete['prix_vente'] : "" ?>"
                                         >
 
                                     </div>

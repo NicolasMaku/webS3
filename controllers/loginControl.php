@@ -27,6 +27,11 @@ switch ($action){
                 exit();
             }
 
+    case "logout":
+            session_start();
+            session_destroy();
+            header("location:../pages/login.php");
+            exit();
 
     case "inscription":
             break;

@@ -1,5 +1,9 @@
 <?php
+include_once "../inc/function.php";
 $page="cards.php";
+session_start();
+
+check_back_office($_SESSION);
 
 
 
@@ -90,72 +94,26 @@ if (isset($_GET['page'])) {
                     </div>
                 </li>
 
+
+                <li class="menu-item">
+                    <a href="backModel.php?page=../pages/url.php" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-collection"></i>
+                        <div data-i18n="Basic">Liens SQL et Todo</div>
+                    </a>
+                </li>
+
                 <!-- Components -->
                 <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
 
 
                 <!-- Cards -->
                 <li class="menu-item">
-                    <a href="backModel.php?page=../pages/cards.php" class="menu-link">
+                    <a href="backModel.php?page=../pages/cardback.php" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-collection"></i>
                         <div data-i18n="Basic">Cards</div>
                     </a>
                 </li>
-
-                <li class="menu-item">
-                    <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                        <div data-i18n="Account Settings">Account Settings</div>
-                    </a>
-                    <ul class="menu-sub">
-                        <li class="menu-item">
-                            <a href="backModel.php?page=../pages/account.php" class="menu-link">
-                                <div data-i18n="Account">Account</div>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="backModel.php?page=../pages/notification.php" class="menu-link">
-                                <div data-i18n="Notifications">Notifications</div>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="backModel.php?page=../pages/connection.php" class="menu-link">
-                                <div data-i18n="Connections">Connections</div>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <!-- Forms & Tables -->
-                <li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp; Tables</span></li>
-                <!-- Forms -->
-                <li class="menu-item active" style="">
-                    <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bx-detail"></i>
-                        <div data-i18n="Form Elements">Form Elements</div>
-                    </a>
-                    <ul class="menu-sub">
-                        <li class="menu-item active">
-                            <a href="backModel.php?page=../pages/form.php" class="menu-link">
-                                <div data-i18n="Basic Inputs">Basic Inputs</div>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="backModel.php?page=../pages/inputgroupes.php" class="menu-link">
-                                <div data-i18n="Input groups">Input groups</div>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-
-                <!-- Tables -->
-                <li class="menu-item">
-                    <a href="backModel.php?page=../pages/tables.php" class="menu-link">
-                        <i class="menu-icon tf-icons bx bx-table"></i>
-                        <div data-i18n="Tables">Tables</div>
-                    </a>
-                </li>
+                
                 <!--lastna -->
 
                 <li class="menu-item">
@@ -246,6 +204,12 @@ if (isset($_GET['page'])) {
                     <a href="backModel.php?page=../pages/moisDeProduction.php" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-table"></i>
                         <div data-i18n="Tables">Configurer les mois de production</div>
+                    </a>
+                </li>
+
+                <li class="menu-item">
+                    <a href="../controllers/loginControl.php?action=logout" class="menu-link">
+                        <div data-i18n="Connections">Deconnexion</div>
                     </a>
                 </li>
 
@@ -390,6 +354,7 @@ if (isset($_GET['page'])) {
 <script src="../assets/vendor/js/bootstrap.js"></script>
 <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 <script src="../assets/vendor/js/menu.js"></script>
+<script src="../js/vanilla.js"></script>
 
 <!-- endbuild -->
 
