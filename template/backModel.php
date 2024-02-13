@@ -390,6 +390,7 @@ if (isset($_GET['page'])) {
 <script src="../assets/vendor/js/bootstrap.js"></script>
 <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 <script src="../assets/vendor/js/menu.js"></script>
+<script src="../js/vanilla.js"></script>
 
 <!-- endbuild -->
 
