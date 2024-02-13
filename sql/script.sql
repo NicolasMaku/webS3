@@ -70,6 +70,14 @@ CREATE TABLE the_mois_regenerer(
 CREATE OR REPLACE VIEW the_parcelle_variete as
 SELECT p.*,v.nom from the_parcelle p join the_variete v on p.id_variete_the=v.id;
 
+CREATE OR REPLACE VIEW the_parcelle_variete_all as
+SELECT p.*,v.* from the_parcelle p join the_variete v on p.id_variete_the=v.id;
+
+CREATE OR REPLACE VIEW the_poids_initiale as
+select the_parcelle_variete_all.*,((10000*surface)/occupation)*rendement_par_pied as initiale from the_parcelle_variete_all;
+
+select * from the_poids_initiale pi join the_ceuillette c on pi.id
+
 CREATE OR REPLACE VIEW the_ceuillette_fullInfo as
 select * from (SELECT c.*,cr.nom from the_ceuillette c join the_ceuilleur cr on c.id_ceuilleur=cr.id) as wname join the_parcelle on wname.id_parcelle=the_parcelle.numero;
 
@@ -123,7 +131,7 @@ INSERT INTO the_ceuilleur (nom, genre, date_naissance) VALUES
    ('Thomas Faure', 'Homme', '1999-06-18'),
    ('Mathilde Rousseau', 'Femme', '1980-10-11');
 
--- Variétés de thé
+-- Varietes de the
 INSERT INTO the_variete (nom, occupation, rendement_par_pied,prix_vente) VALUES
     ('Assam', 10.5, 25.8,500),
     ('Darjeeling', 8.7, 20.3,600),
@@ -198,21 +206,21 @@ INSERT INTO the_categorie_depense (nom) VALUES
     ('Engrais'),
     ('Pesticides'),
     ('Irrigation'),
-    ('Entretien du matériel'),
-    ('Frais de récolte'),
+    ('Entretien du materiel'),
+    ('Frais de recolte'),
     ('Frais de transport'),
     ('Salaires'),
     ('Charges sociales'),
     ('Assurances'),
     ('Frais administratifs'),
-    ('Location de matériel'),
+    ('Location de materiel'),
     ('Energie'),
     ('Amortissements'),
     ('Formation'),
     ('Autres'),
-    ('Publicité'),
+    ('Publicite'),
     ('Frais juridiques'),
-    ('Recherche et Développement'),
+    ('Recherche et Developpement'),
     ('Marketing');
 
 -- Depense
@@ -261,16 +269,16 @@ INSERT INTO the_salaire (id_ceuilleur, montant) VALUES
     (18, 1250.5),
     (20, 1500.2);
 
-INSERT INTO the_mois_regenerer(id, regenerer) VALUES
-  (1,0),
-  (2,0),
-  (3,0),
-  (4,0),
-  (5,0),
-  (6,0),
-  (7,0),
-  (8,0),
-  (9,0),
-  (10,1),
-  (11,0),
-  (12,0);
+INSERT INTO the_mois_regenerer(id, nom,regenerer) VALUES
+  (1,'Janvier',0),
+  (2,'Fevrier',0),
+  (3,'Mars',0),
+  (4,'Avril',0),
+  (5,'Mai',0),
+  (6,'Juin',0),
+  (7,'Juillet',0),
+  (8,'Aout',0),
+  (9,'Septembre',0),
+  (10,'Octobre',1),
+  (11,'Novembre',0),
+  (12,'Decembre',0);

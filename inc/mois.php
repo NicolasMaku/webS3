@@ -12,6 +12,25 @@
         }
     }
 
+    function mois_getAll() {
+        $crud = new Crud('the_mois_regenerer',connect());
+        return $crud->lister();
+    }
+
+    function mois_reset() {
+        $connection = connect();
+        $sql = "update the_mois_regenerer set regenerer=0";
+        $connection->query($sql)->execute();
+    }
+
+    function mois_update_regenerated($id_mois) {
+        $connection = connect();
+        foreach ($id_mois as $cle => $value) {
+            $sql = "update the_mois_regenerer set regenerer=1 where id=".$value;
+            $connection->query($sql)->execute();
+        }
+    }
+
 //    $mois = [
 //        1 => 0,
 //        2 => 1,
@@ -28,4 +47,8 @@
 //    ];
 //
 //    update_mois_production($mois);
+//    mois_reset();
+
+//    $mois = [1,2,3,4];
+//    mois_update_regenerated($mois);
 ?>
