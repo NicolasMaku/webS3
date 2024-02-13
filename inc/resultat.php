@@ -5,13 +5,53 @@
         return connect()->query($sql)->fetch(PDO::FETCH_ASSOC)['somme'];
     }
 
+    function getPoidsInitiale() {
+        $sql = "select sum(initiale) as somme from the_poids_initiale";
+        return connect()->query($sql)->fetch(PDO::FETCH_ASSOC)['somme'];
+    }
+
+    function getPoidsInitiale_mois($date,$id_parcelle) {
+        $estRegenere = connect()->query("select * from the_mois_regenerer where id=MONTH('".$date."')")->fetch(PDO::FETCH_ASSOC)['regenerer'];
+
+        if ($estRegenere==1) {
+            $sql = "select sum(initiale) as somme from the_poids_initiale where MONTH('".$date."') and YEAR('".$date."') and numero=".$id_parcelle;
+            return connect()->query($sql)->fetch(PDO::FETCH_ASSOC)['somme'];
+        } else {
+            $mois = intval($date.split("-")[1]);
+            $year = intval($date.split("-")[0]);
+            return getPoidsInitiale_moisNumber(nextMonth($mois,$year)[0],nextMonth($mois,$year)[1],$id_parcelle);
+        }
+
+
+    }
+
+    function nextMonth($month,$year) {
+        if ($month<11) {
+            return [$month+1,$year];
+        } if ($month==12) {
+            return [1,$year+1];
+        }
+    }
+    function getPoidsInitiale_moisNumber($mois,$year,$id_parcelle) {
+        $estRegenere = connect()->query("select * from the_mois_regenerer where id=".$mois.")")->fetch(PDO::FETCH_ASSOC)['regenerer'];
+
+        if ($estRegenere==1) {
+            $sql = "select sum(initiale) as somme from the_poids_initiale where Month(date)=".$mois." and month(year)=".$year." and numero=".$id_parcelle;
+            return connect()->query($sql)->fetch(PDO::FETCH_ASSOC)['somme'];
+        } else {
+            return getPoidsInitiale_moisNumber(nextMonth($mois,$year)[0],nextMonth($mois,$year)[1],$id_parcelle);
+        }
+
+    }
+
+    function getPoidsInitiale_intervalle($date1,$date2) {
+        $sql = "select sum(initiale) as somme from the_poids_initiale";
+        return connect()->query($sql)->fetch(PDO::FETCH_ASSOC)['somme'];
+    }
+
 //    Quel est la quantite initiale dans une parcelle
     function getPoidsRestantParcelle() {
-        $sqlSurface = "select sum(surface) as somme from the_parcelle";
-        $surface = connect()->query($sqlSurface)->fetch(PDO::FETCH_ASSOC)['somme'];
-
-        $quantiteInitialeParHa = 1000;
-        return $quantiteInitialeParHa*$surface - getPoidsTotalCeuillette();
+        return getPoidsInitiale() - getPoidsTotalCeuillette();
     }
 
     function getCoutRevientKg() {
@@ -75,4 +115,5 @@
 //    echo getPoidsRestantParcelle_intervalle("2023-2-1","2026-2-28") . "\n";
 //    echo getCoutRevientKg_intervalle("2023-2-1","2026-2-28") . "\n";
 //    echo getCoutRevientKg();
+    echo getPoidsInitiale_mois("2024-07-12",1);
 ?>

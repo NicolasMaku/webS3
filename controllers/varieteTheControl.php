@@ -5,7 +5,7 @@ $action = get_action($_GET, $_POST);
 
 switch($action){
     case "save" :
-        $return = the_insertion($_POST['nom'], $_POST['occupation'], $_POST['rendement']);
+        $return = the_insertion($_POST['nom'], $_POST['occupation'], $_POST['rendement'], $_POST['prixVente']);
 
         if($return === true){
             echo "Variete de thé inseré avec succès";
@@ -18,14 +18,14 @@ switch($action){
         break;
 
     case "update" :
-        $return = the_modify($_POST['idVariete'], $_POST['nom'], $_POST['occupation'], $_POST['rendement']);
+        $return = the_modify($_POST['idVariete'], $_POST['nom'], $_POST['occupation'], $_POST['rendement'], $_POST['prixVente']);
 
         if($return === true){
             header("location:../template/backModel.php?page=../pages/tableauVarieterThe.php");
             exit();
         }
         else {
-            header("location:../template/backModel.php?page=../pages/insertVarieteThe.php&action=update&idVariete=".$_POST['idVariete']);
+            header("location:../template/backModel.php?page=../pages/insertVarieteThe.php&action=update&idVariete=".$_POST['idVariete']."&error=".$return);
             exit();
         }
 

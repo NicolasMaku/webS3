@@ -19,7 +19,7 @@ CREATE TABLE the_ceuilleur(
       nom VARCHAR(50),
       genre VARCHAR(20),
       date_naissance date,
-      poids_minimum DOUBLE(16,2),
+      poids_minimal DOUBLE(16,2),
       bonus SMALLINT,
       malus SMALLINT
 );
@@ -63,7 +63,7 @@ CREATE TABLE the_salaire(
 
 CREATE TABLE the_mois_regenerer(
     id smallint primary key,
-    mois VARCHAR(20),
+    nom VARCHAR(20),
     regenerer SMALLINT default 1
 );
 

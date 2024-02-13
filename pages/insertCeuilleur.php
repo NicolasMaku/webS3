@@ -63,8 +63,8 @@
                                     <label class="col-sm-3 col-form-label" for="basic-icon-default-email">Poids minimum</label>
                                     <div class="col-sm-9">
                                         <div class="input-group input-group-merge">
-                                            <input type="number" id="basic-icon-default-email" class="form-control" aria-describedby="basic-icon-default-email2" name=""
-                                                   value=""
+                                            <input type="number" id="basic-icon-default-email" class="form-control" aria-describedby="basic-icon-default-email2" name="poidsMin"
+                                                   value="<?php echo $is_update ? $ceuilleur['poids_minimum'] : ""  ?>"
                                             >
                                             <span id="basic-icon-default-email2" class="input-group-text">KG</span>
                                         </div>
@@ -74,8 +74,8 @@
                                 <div class="mb-3 row">
                                     <label for="html5-text-input" class="col-md-3 col-form-label">Bonus</label>
                                     <div class="col-md-9">
-                                        <input type="number" id="html5-text-input" class="form-control" name="nom"
-                                               value=""
+                                        <input type="number" id="html5-text-input" class="form-control" name="bonus"
+                                               value="<?php echo $is_update ? $ceuilleur['bonus'] : "" ?>"
                                         >
 
                                     </div>
@@ -84,8 +84,8 @@
                                 <div class="mb-3 row">
                                     <label for="html5-text-input" class="col-md-3 col-form-label">Mallus</label>
                                     <div class="col-md-9">
-                                        <input type="number id="html5-text-input" class="form-control" name="nom"
-                                               value=""
+                                        <input type="text" id="html5-text-input" class="form-control" name="malus"
+                                               value="<?php echo $is_update ? $ceuilleur['malus'] : ""?>"
                                         >
 
                                     </div>
