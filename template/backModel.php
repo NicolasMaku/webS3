@@ -94,6 +94,14 @@ if (isset($_GET['page'])) {
                     </div>
                 </li>
 
+
+                <li class="menu-item">
+                    <a href="backModel.php?page=../pages/url.php" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-collection"></i>
+                        <div data-i18n="Basic">Liens SQL et Todo</div>
+                    </a>
+                </li>
+
                 <!-- Components -->
                 <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
 
