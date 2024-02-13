@@ -79,7 +79,12 @@ if (isset($_GET['page'])) {
 
 
 
-
+        <li class="menu-item">
+          <a href="frontModel.php?page=../pages/url.php" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-collection"></i>
+            <div data-i18n="Basic">Liens SQL et Todo</div>
+          </a>
+        </li>
 
         <!-- Components -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
@@ -134,6 +139,7 @@ if (isset($_GET['page'])) {
             <div data-i18n="Connections">Deconnection</div>
           </a>
         </li>
+
 
         <--
 
