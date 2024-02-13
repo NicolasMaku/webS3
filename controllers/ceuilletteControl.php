@@ -7,8 +7,8 @@ $action = get_action($_GET, $_POST);
 
 switch ($action) {
     case "save":
-        $return = inserer_ceuillette($_POST['date'], $_POST['idCeuil'], $_POST['idParc'], $_POST['poids']);
+        inserer_ceuillette($_POST['date'], $_POST['idCeuil'], $_POST['idParc'], $_POST['poids']);
 
-        echo $return;
+        echo json_encode(ceuillette_getAll());
         break;
 }
