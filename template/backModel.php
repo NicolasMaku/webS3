@@ -228,6 +228,19 @@ if (isset($_GET['page'])) {
                     </a>
                 </li>
 
+                <li class="menu-item">
+                    <a href="backModel.php?page=../pages/moisDeProduction.php" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-table"></i>
+                        <div data-i18n="Tables">Configurer les mois de production</div>
+                    </a>
+                </li>
+
+                <li class="menu-item">
+                    <a href="backModel.php?page=../pages/payementCeuilleur.php" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-table"></i>
+                        <div data-i18n="Tables">Vente de feuille</div>
+                    </a>
+                </li>
 
 
 
