@@ -56,11 +56,20 @@ CREATE TABLE the_salaire(
     montant DOUBLE(16,2) default 0
 );
 
+CREATE TABLE the_mois_regenerer(
+    id smallint auto_increment primary key,
+    mois VARCHAR(20),
+    regenerer SMALLINT default 0
+);
+
 CREATE OR REPLACE VIEW the_parcelle_variete as
 SELECT p.*,v.nom from the_parcelle p join the_variete v on p.id_variete_the=v.id;
 
 CREATE OR REPLACE VIEW the_ceuillette_fullInfo as
 select * from (SELECT c.*,cr.nom from the_ceuillette c join the_ceuilleur cr on c.id_ceuilleur=cr.id) as wname join the_parcelle on wname.id_parcelle=the_parcelle.numero;
+
+CREATE OR REPLACE VIEW the_depense_info as
+SELECT d.*,cd.nom from the_depense d join the_categorie_depense cd on d.id_categorie=cd.id;
 
 -- Utilisateurs
 INSERT INTO the_user (username, email, password, admin) VALUES
