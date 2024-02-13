@@ -78,14 +78,38 @@
         $poids_minimal = connect()->query($sql)->fetch(PDO::FETCH_ASSOC)['poids_minimal'];
 
         if ($poids_minimal>get_poids_jour($date)) {
-            return ceuilleur_salaire_journalier($id_ceuilleur) + ($poids_minimal - get_poids_jour($date))*connect()->query("select bonus from the_ceuilleur where id=".$id_ceuilleur)->fetch(PDO::FETCH_ASSOC)['bonus'];
+            return ceuilleur_salaire_journalier($id_ceuilleur) + ($poids_minimal - get_poids_jour($date))*connect()->query("select bonus from the_ceuilleur where id=".$id_ceuilleur)->fetch(PDO::FETCH_ASSOC)['bonus']*connect()->query("select prix_vente from ceuillette_parcelle where id=".$id_ceuilleur)->fetch(PDO::FETCH_ASSOC)['prix_vente'];
         } else if ($poids_minimal==get_poids_jour($date)) {
             return ceuilleur_salaire_journalier($id_ceuilleur);
         } else {
-            return ceuilleur_salaire_journalier($id_ceuilleur) - (get_poids_jour($date) - $poids_minimal)*connect()->query("select bonus from the_ceuilleur where id=".$id_ceuilleur)->fetch(PDO::FETCH_ASSOC)['malus'];
+            return ceuilleur_salaire_journalier($id_ceuilleur) - (get_poids_jour($date) - $poids_minimal)*connect()->query("select malus from the_ceuilleur where id=".$id_ceuilleur)->fetch(PDO::FETCH_ASSOC)['malus']*connect()->query("select prix_vente from ceuillette_parcelle where id=".$id_ceuilleur)->fetch(PDO::FETCH_ASSOC)['prix_vente'];
         }
     }
 
+    function getPayement_par_Ceuilleur($date1,$date2) {
+        $return = [];
+        $ceuilleurs = ceuilleur_getAll();
+        foreach ($ceuilleurs as $ceuilleur) {
+            $somme = 0;
+            while (dateDuLendemain($date1)!=$date2) {
+                $somme += ceuilleur_getPayement($date1,$ceuilleur['id']);
+            }
+            $return[$ceuilleur['id']] = $somme;
+        }
+
+        return $return;
+    }
+
+    function dateDuLendemain($dateActuelle) {
+        // Convertit la date actuelle en objet DateTime
+        $dateTime = new DateTime($dateActuelle);
+
+        // Ajoute un jour à la date
+        $dateTime->modify('+1 day');
+
+        // Renvoie la date du lendemain au format 'YYYY-MM-DD'
+        return $dateTime->format('Y-m-d');
+    }
 //    ceuilleur_insert("Kevin","Homme","2018-12-4");
 //    var_dump(getAll());
 ?>
