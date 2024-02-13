@@ -1,7 +1,8 @@
 <?php
     include_once "../inc/function.php";
-    $categories = categorie_depense_getAll();
-    $depenses = depense_info_getAll();
+    $categories = depense_info_getAll();
+
+//    var_dump($categories);
 ?>
 
 <!-- Content wrapper -->
@@ -55,27 +56,29 @@
         </div>
 
         <div class="row">
-            <div class="card">
-                <h5 class="card-header">Depenses </h5>
-                <div class="table-responsive text-nowrap">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Categorie</th>
-                            <th>Montant</th>
-                        </tr>
-                        </thead>
-                        <tbody class="table-border-bottom-0" id="the_table">
-                            <?php foreach ($depenses as $depense) {?>
+            <div class="col-md-12">
+                <div class="card-body card">
+                    <h5 class="card-header">Depenses </h5>
+                    <div class="table-responsive text-nowrap">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Categorie</th>
+                                <th>Montant</th>
+                            </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                                <?php foreach($categories as $category) { ?>
                                 <tr>
-                                    <td><?php echo $depense['date'] ?></td>
-                                    <td><?php echo $depense['nom'] ?></td>
-                                    <td><?php echo $depense['montant'] ?></td>
+                                    <td><?php echo $category['date'] ?></td>
+                                    <td><?php echo $category['nom'] ?></td>
+                                    <td><?php echo $category['montant']?></td>
                                 </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
