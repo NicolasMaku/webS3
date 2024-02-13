@@ -1,6 +1,7 @@
 <?php
     include_once "../inc/function.php";
     $categories = categorie_depense_getAll();
+    $depenses = depense_info_getAll();
 ?>
 
 <!-- Content wrapper -->
@@ -65,12 +66,14 @@
                             <th>Montant</th>
                         </tr>
                         </thead>
-                        <tbody class="table-border-bottom-0">
-                            <tr>
-                                <td>20-02-2024</td>
-                                <td>Chips beee</td>
-                                <td>50000 AR</td>
-                            </tr>
+                        <tbody class="table-border-bottom-0" id="the_table">
+                            <?php foreach ($depenses as $depense) {?>
+                                <tr>
+                                    <td><?php echo $depense['date'] ?></td>
+                                    <td><?php echo $depense['nom'] ?></td>
+                                    <td><?php echo $depense['montant'] ?></td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
