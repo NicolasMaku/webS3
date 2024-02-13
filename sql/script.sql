@@ -17,13 +17,17 @@ CREATE TABLE the_ceuilleur(
       id SMALLINT auto_increment primary key,
       nom VARCHAR(50),
       genre VARCHAR(20),
-      date_naissance date
+      date_naissance date,
+      poids_minimum DOUBLE(16,2),
+      bonus SMALLINT,
+      malus SMALLINT
 );
 
 CREATE TABLE the_parcelle(
     numero SMALLINT auto_increment primary key,
     surface DOUBLE(16,2),
     id_variete_the SMALLINT,
+    poidsInitiale DOUBLE(16,2),
     FOREIGN KEY (id_variete_the) REFERENCES the_variete(id)
 );
 
@@ -57,9 +61,9 @@ CREATE TABLE the_salaire(
 );
 
 CREATE TABLE the_mois_regenerer(
-    id smallint auto_increment primary key,
+    id smallint primary key,
     mois VARCHAR(20),
-    regenerer SMALLINT default 0
+    regenerer SMALLINT default 1
 );
 
 CREATE OR REPLACE VIEW the_parcelle_variete as
@@ -255,3 +259,17 @@ INSERT INTO the_salaire (id_ceuilleur, montant) VALUES
     (16, 1950.6),
     (18, 1250.5),
     (20, 1500.2);
+
+INSERT INTO the_mois_regenerer(id, regenerer) VALUES
+  (1,0),
+  (2,0),
+  (3,0),
+  (4,0),
+  (5,0),
+  (6,0),
+  (7,0),
+  (8,0),
+  (9,0),
+  (10,1),
+  (11,0),
+  (12,0);
