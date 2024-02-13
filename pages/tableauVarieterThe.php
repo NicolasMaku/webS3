@@ -24,6 +24,7 @@
                         <th>Nom</th>
                         <th>Occupation</th>
                         <th>Rendement par pied</th>
+                        <th>Prix de vente</th>
                         <th>Modifier</th>
                         <th>Supprimer</th>
                     </tr>
@@ -34,6 +35,7 @@
                         <td><?php echo $variete['nom'] ?></td>
                         <td><?php echo $variete['occupation']?></td>
                         <td><?php echo $variete['rendement_par_pied']?></td>
+                        <td><?php echo $variete['prix_de_vente']?></td>
                         <td><a href="../template/backModel.php?page=../pages/insertVarieteThe.php&action=update&idVariete=<?php echo $variete['id']?>"><button type="button" class="btn rounded-pill btn-outline-info">Modifier</button></a></td>
                         <td><a href="../controllers/varieteTheControl.php?action=delete&idVariete=<?php echo $variete['id']?>"><button type="button" class="btn rounded-pill btn-outline-danger">Supprimer</button></a></td>
                     </tr>

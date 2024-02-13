@@ -59,6 +59,39 @@
                                     </div>
                                 </div>
 
+                                <div class="row mb-3">
+                                    <label class="col-sm-3 col-form-label" for="basic-icon-default-email">Poids minimum</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group input-group-merge">
+                                            <input type="number" id="basic-icon-default-email" class="form-control" aria-describedby="basic-icon-default-email2" name=""
+                                                   value=""
+                                            >
+                                            <span id="basic-icon-default-email2" class="input-group-text">KG</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 row">
+                                    <label for="html5-text-input" class="col-md-3 col-form-label">Bonus</label>
+                                    <div class="col-md-9">
+                                        <input type="number" id="html5-text-input" class="form-control" name="nom"
+                                               value=""
+                                        >
+
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 row">
+                                    <label for="html5-text-input" class="col-md-3 col-form-label">Mallus</label>
+                                    <div class="col-md-9">
+                                        <input type="number id="html5-text-input" class="form-control" name="nom"
+                                               value=""
+                                        >
+
+                                    </div>
+                                </div>
+
+
                                 <input type="submit" class="btn btn-primary" value="<?php echo $is_update ? "Modifier" : "Ajouter" ?>" style="background-color: green">
 
                             </div>
