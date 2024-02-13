@@ -1,6 +1,5 @@
 <?php
 include_once "../inc/function.php";
-//$ceuilleurs = getPayement_par_Ceuilleur("2023-01-01", <?php now ?><!--);-->
 
 if(isset($_GET['msg'])){
     alert($_GET['msg']);
@@ -19,9 +18,10 @@ if(isset($_GET['msg'])){
             <div class="table-responsive text-nowrap">
                 <form action="" id="crit-form">
                     <div class="input-group">
+                        <input type="hidden" name="action" value="payement">
                         <span class="input-group-text">Date Min and Max</span>
-                        <input type="date" aria-label="Min" class="form-control" id="date-min">
-                        <input type="date" aria-label="Max" class="form-control" id="date-max">
+                        <input type="date" aria-label="Min" class="form-control" id="date-min" name="debut" value="2023-01-01">
+                        <input type="date" aria-label="Max" class="form-control" id="date-max" name="fin" value="2024-02-14">
                     </div>
                     <br>
                     <input type="submit" class="btn btn-primary" value="Afficher">
@@ -66,7 +66,9 @@ if(isset($_GET['msg'])){
         let form = document.getElementById("crit-form");
         let table = document.getElementById("my_table");
 
-        let formData = new FormData()
+        let formData = new FormData(form);
+
+        refresh_table();
 
         function refresh_table(){
             const xhr = new XMLHttpRequest();
@@ -74,15 +76,44 @@ if(isset($_GET['msg'])){
             xhr.addEventListener("readystatechange", () => {
                 if(xhr.readyState === 4) {
                     if(xhr.status === 200){
-                        let dataSorted = JSON.parse(xhr.responseText);
+                        let newDonnees = JSON.parse(xhr.responseText);
+                        let tBody = document.getElementById("my_table");
+                        tBody.innerHTML = "";
 
+                        for (let i = 0; i < newDonnees.length ; i++) {
+                            let row = document.createElement("tr");
 
+                            let date = document.createElement("td");
+                            let ceuilleur = document.createElement("td");
+                            let poids = document.createElement("td");
+                            let bonus = document.createElement("td");
+                            let mallus = document.createElement("td");
+                            let montant = document.createElement("td");
+
+                            date.textContent = newDonnees[i]['date'];
+                            ceuilleur.textContent = newDonnees[i]['nom'];
+                            poids.textContent = newDonnees[i]['poids_minimal'];
+                            bonus.textContent = newDonnees[i]['bonus'];
+                            mallus.textContent = newDonnees[i]['malus'];
+                            montant.textContent = newDonnees[i]['montant'];
+
+                            row.appendChild(date);
+                            row.appendChild(ceuilleur);
+                            row.appendChild(poids);
+                            row.appendChild(bonus);
+                            row.appendChild(mallus)
+                            row.appendChild(montant);
+
+                            tBody.appendChild(row);
+                        }
 
                     }
                 }
+
             });
 
-            xhr.open("POST", "", true);
+
+            xhr.open("POST", "../controllers/ceuilleurControl.php", true);
             xhr.send(formData);
         }
     })
