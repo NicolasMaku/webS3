@@ -14,11 +14,11 @@
         $estRegenere = connect()->query("select * from the_mois_regenerer where id=MONTH('".$date."')")->fetch(PDO::FETCH_ASSOC)['regenerer'];
 
         if ($estRegenere==1) {
-            $sql = "select sum(initiale) as somme from the_poids_initiale where MONTH('".$date."') and YEAR('".$date."') and numero=".$id_parcelle;
+            $sql = "select sum(initiale) as somme from the_poids_initiale where numero=".$id_parcelle;
             return connect()->query($sql)->fetch(PDO::FETCH_ASSOC)['somme'];
         } else {
-            $mois = intval($date.split("-")[1]);
-            $year = intval($date.split("-")[0]);
+            $mois = intval(explode("-", $date)[1]);
+            $year = intval(explode("-", $date)[0]);
             return getPoidsInitiale_moisNumber(nextMonth($mois,$year)[0],nextMonth($mois,$year)[1],$id_parcelle);
         }
 
@@ -33,10 +33,10 @@
         }
     }
     function getPoidsInitiale_moisNumber($mois,$year,$id_parcelle) {
-        $estRegenere = connect()->query("select * from the_mois_regenerer where id=".$mois.")")->fetch(PDO::FETCH_ASSOC)['regenerer'];
+        $estRegenere = connect()->query("select * from the_mois_regenerer where id=".$mois)->fetch(PDO::FETCH_ASSOC)['regenerer'];
 
         if ($estRegenere==1) {
-            $sql = "select sum(initiale) as somme from the_poids_initiale where Month(date)=".$mois." and month(year)=".$year." and numero=".$id_parcelle;
+            $sql = "select sum(initiale) as somme from the_poids_initiale where numero=".$id_parcelle;
             return connect()->query($sql)->fetch(PDO::FETCH_ASSOC)['somme'];
         } else {
             return getPoidsInitiale_moisNumber(nextMonth($mois,$year)[0],nextMonth($mois,$year)[1],$id_parcelle);
@@ -115,5 +115,5 @@
 //    echo getPoidsRestantParcelle_intervalle("2023-2-1","2026-2-28") . "\n";
 //    echo getCoutRevientKg_intervalle("2023-2-1","2026-2-28") . "\n";
 //    echo getCoutRevientKg();
-    echo getPoidsInitiale_mois("2024-07-12",1);
+//    echo getPoidsInitiale_mois("2024-07-12",1);
 ?>
