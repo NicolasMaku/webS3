@@ -63,9 +63,27 @@
         }
     }
 
-    function ceuilleur_getPayement() {
-        $sql = "select * from poids_minimal from the_ceuilleur";
-        $poids_minimal =
+    function ceuilleur_salaire_journalier($idCeuilleur) {
+        $sql = "select  montant from the_salaire where id_ceuilleur=".$idCeuilleur;
+        return connect()->query($sql)->fetch(PDO::FETCH_ASSOC)['montant'];
+    }
+
+    function get_poids_jour($date) {
+        $sql = "select sum(poids_ceuilli) as somme from the_ceuillette where date='".$date."'";
+        return connect()->query($sql)->fetch(PDO::FETCH_ASSOC)['somme'];
+    }
+
+    function ceuilleur_getPayement($date,$id_ceuilleur) {
+        $sql = "select  poids_minimal from the_ceuilleur";
+        $poids_minimal = connect()->query($sql)->fetch(PDO::FETCH_ASSOC)['poids_minimal'];
+
+        if ($poids_minimal>get_poids_jour($date)) {
+            return ceuilleur_salaire_journalier($id_ceuilleur) + ($poids_minimal - get_poids_jour($date))*connect()->query("select bonus from the_ceuilleur where id=".$id_ceuilleur)->fetch(PDO::FETCH_ASSOC)['bonus'];
+        } else if ($poids_minimal==get_poids_jour($date)) {
+            return ceuilleur_salaire_journalier($id_ceuilleur);
+        } else {
+            return ceuilleur_salaire_journalier($id_ceuilleur) - (get_poids_jour($date) - $poids_minimal)*connect()->query("select bonus from the_ceuilleur where id=".$id_ceuilleur)->fetch(PDO::FETCH_ASSOC)['malus'];
+        }
     }
 
 //    ceuilleur_insert("Kevin","Homme","2018-12-4");
