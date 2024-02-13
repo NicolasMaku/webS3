@@ -1,5 +1,9 @@
 <?php
+include_once "../inc/function.php";
 $page="cards.php";
+session_start();
+
+check_back_office($_SESSION);
 
 
 
@@ -119,8 +123,8 @@ if (isset($_GET['page'])) {
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="backModel.php?page=../pages/connection.php" class="menu-link">
-                                <div data-i18n="Connections">Connections</div>
+                            <a href="../controllers/loginControl.php?action=logout" class="menu-link">
+                                <div data-i18n="Connections">Deconnexion</div>
                             </a>
                         </li>
                     </ul>
@@ -129,13 +133,13 @@ if (isset($_GET['page'])) {
                 <!-- Forms & Tables -->
                 <li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp; Tables</span></li>
                 <!-- Forms -->
-                <li class="menu-item active" style="">
+                <li class="menu-item" style="">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class="menu-icon tf-icons bx bx-detail"></i>
                         <div data-i18n="Form Elements">Form Elements</div>
                     </a>
                     <ul class="menu-sub">
-                        <li class="menu-item active">
+                        <li class="menu-item">
                             <a href="backModel.php?page=../pages/form.php" class="menu-link">
                                 <div data-i18n="Basic Inputs">Basic Inputs</div>
                             </a>

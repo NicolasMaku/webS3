@@ -1,6 +1,9 @@
 <?php
+include_once "../inc/function.php";
+
 $page="cards.php";
-$codePage = "";
+session_start();
+check_front_office($_SESSION);
 
 if (isset($_GET['page'])) {
   $page=$_GET['page'];
@@ -105,8 +108,8 @@ if (isset($_GET['page'])) {
               </a>
             </li>
             <li class="menu-item">
-              <a href="frontModel.php?page=../pages/connection.php" class="menu-link">
-                <div data-i18n="Connections">Connections</div>
+              <a href="../controllers/loginControl.php?action=logout" class="menu-link">
+                <div data-i18n="Connections">Deconnection</div>
               </a>
             </li>
           </ul>

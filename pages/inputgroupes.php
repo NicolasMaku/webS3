@@ -6,7 +6,7 @@
 
         <div class="row">
             <!-- Basic -->
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card mb-4">
                     <h5 class="card-header">Basic</h5>
                     <div class="card-body demo-vertical-spacing demo-only-element">

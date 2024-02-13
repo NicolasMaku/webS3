@@ -18,7 +18,7 @@
 
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card mb-4">
                     <h5 class="card-header"><?php echo $is_update ? "Modifier" : "Inserer"?> une Parcelle</h5>
                     <div class="card-body">
