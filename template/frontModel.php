@@ -1,7 +1,10 @@
 <?php
 $page="cards.php";
+$codePage = "";
+
 if (isset($_GET['page'])) {
-$page=$_GET['page'];
+  $page=$_GET['page'];
+
 }
 ?>
 <html lang="en" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free"><head>
@@ -112,33 +115,11 @@ $page=$_GET['page'];
         <!-- Forms & Tables -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp; Tables</span></li>
         <!-- Forms -->
-        <li class="menu-item active" style="">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-detail"></i>
-            <div data-i18n="Form Elements">Form Elements</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item active">
-              <a href="frontModel.php?page=../pages/form.php" class="menu-link">
-                <div data-i18n="Basic Inputs">Basic Inputs</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="frontModel.php?page=../pages/inputgroupes.php" class="menu-link">
-                <div data-i18n="Input groups">Input groups</div>
-              </a>
-            </li>
-          </ul>
-        </li>
+
 
 
         <!-- Tables -->
-        <li class="menu-item">
-          <a href="frontModel.php?page=../pages/tables.php" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-table"></i>
-            <div data-i18n="Tables">Tables</div>
-          </a>
-        </li>
+
         <!--lastna -->
 
         <li class="menu-item">
