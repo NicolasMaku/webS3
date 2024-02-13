@@ -1,6 +1,6 @@
 <?php
     include_once "../inc/function.php";
-    $categories = depense_getAll();
+    $categories = depense_info_getAll();
 
 //    var_dump($categories);
 ?>

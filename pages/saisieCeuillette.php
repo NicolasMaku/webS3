@@ -12,7 +12,7 @@
 
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card mb-4">
                     <h5 class="card-header">Saisie de Ceuillette</h5>
                     <div class="card-body">
@@ -70,7 +70,8 @@
         </div>
 
         <div class="row">
-            <div class="card">
+            <div class="col-md-12">
+                <div class="card p-4">
                 <h5 class="card-header">Depenses </h5>
                 <div class="table-responsive text-nowrap">
                     <table class="table">
@@ -94,6 +95,7 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
             </div>
         </div>
     </div>
